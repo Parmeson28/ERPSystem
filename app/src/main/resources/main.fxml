@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemaerp.Controller">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c3c3c3" height="400.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c3c3c3" height="75.0" layoutX="200.0" stroke="BLACK" strokeType="INSIDE" width="401.0" />
+      <Line endX="-32.0" endY="262.0" layoutX="232.0" layoutY="138.0" startX="-32.0" startY="-138.0" strokeWidth="2.0" />
+      <Line endX="294.0" layoutX="307.0" layoutY="75.0" startX="-106.5" strokeWidth="2.0" />
+      <Button layoutX="14.0" layoutY="38.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="169.0" text="Button" />
+      <Button layoutX="16.0" layoutY="91.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="169.0" text="Button" />
+      <Button layoutX="14.0" layoutY="146.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="169.0" text="Button" />
+      <TextField fx:id="descricao" layoutX="208.0" layoutY="13.0" prefHeight="25.0" prefWidth="200.0" promptText="Descrição..." />
+      <TextField fx:id="codigo" layoutX="437.0" layoutY="13.0" prefHeight="25.0" prefWidth="115.0" promptText="Código..." />
+      <Button fx:id="pesquisar" layoutX="208.0" layoutY="45.0" mnemonicParsing="false" onAction="#takeText" text="Pesquisar" />
+   </children>
+</AnchorPane>
