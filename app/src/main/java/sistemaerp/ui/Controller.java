@@ -1,4 +1,4 @@
-package sistemaerp;
+package sistemaerp.ui;
 
 
 import javafx.event.ActionEvent;

@@ -1,4 +1,4 @@
-package sistemaerp;
+package sistemaerp.ui;
 
 import java.io.IOException;
 
