@@ -19,5 +19,5 @@ javafx {
 }
 
 application {
-    mainClass = 'sistemaerp.App'
+    mainClass = 'sistemaerp.ui.App'
 }
