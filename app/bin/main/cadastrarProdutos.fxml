@@ -20,7 +20,7 @@
       <Button layoutX="14.0" layoutY="146.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="169.0" text="Cadastrar Produtos" />
       <TextField fx:id="descricao" layoutX="218.0" layoutY="110.0" prefHeight="25.0" prefWidth="200.0" promptText="Descrição..." />
       <TextField fx:id="codigo" layoutX="218.0" layoutY="153.0" prefHeight="25.0" prefWidth="115.0" promptText="Código..." />
-      <Button fx:id="pesquisar" layoutX="218.0" layoutY="319.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="CADASTRAR" />
+      <Button fx:id="pesquisar" layoutX="218.0" layoutY="319.0" mnemonicParsing="false" onAction="#takeText" prefHeight="25.0" prefWidth="115.0" text="CADASTRAR" />
       <Label layoutX="233.0" layoutY="13.0" prefHeight="51.0" prefWidth="336.0" text="Cadastrar Produtos">
          <font>
             <Font name="System Bold" size="35.0" />

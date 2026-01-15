@@ -1,14 +1,18 @@
 package sistemaerp.inventory;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class InventoryManagement {
 
     private String filePath = "D:\\SistemaERP\\app\\src\\main\\java\\sistemaerp\\inventory\\inventory.txt";
     BufferedReader reader;
+    BufferedWriter writer;
+    String line;
 
     public boolean verifyFile(){
         
@@ -30,7 +34,6 @@ public class InventoryManagement {
         try {
             reader = new BufferedReader(new FileReader(filePath));
 
-            String line;
             while((line = reader.readLine()) != null){
 
                 line = line.replace(";", " ");
@@ -49,18 +52,17 @@ public class InventoryManagement {
    }
 
 
-   public void registerItems(){
+   public void registerItems(String description, String id, int quantity){
         try {
-            reader = new BufferedReader(new FileReader(filePath));
+            writer = new BufferedWriter(new FileWriter(filePath, true));
+            
+            line = description+";"+id+";"+quantity;
 
-            String line;
-            while((line = reader.readLine()) != null){
+            writer.write(line);
+            writer.newLine();
 
-                line = line.replace(";", " ");
-                
-                System.out.println(line);
-
-            }  
+            writer.flush();
+            writer.close();
 
         }catch(FileNotFoundException e) {
             System.out.println("ERRO");
