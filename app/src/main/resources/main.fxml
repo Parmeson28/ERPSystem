@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemaerp.ui.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemaerp.ui.ControllerMain">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c3c3c3" height="400.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c3c3c3" height="75.0" layoutX="200.0" stroke="BLACK" strokeType="INSIDE" width="401.0" />
@@ -19,7 +19,7 @@
       <Button layoutX="14.0" layoutY="146.0" mnemonicParsing="false" onAction="#switchCadastro" prefHeight="38.0" prefWidth="169.0" text="Cadastrar Produtos" />
       <TextField fx:id="descricao" layoutX="208.0" layoutY="38.0" prefHeight="25.0" prefWidth="200.0" promptText="Descrição..." />
       <TextField fx:id="codigo" layoutX="418.0" layoutY="38.0" prefHeight="25.0" prefWidth="115.0" promptText="Código..." />
-      <Button fx:id="pesquisar" layoutX="545.0" layoutY="38.0" mnemonicParsing="false" onAction="#takeText" prefHeight="25.0" prefWidth="26.0" text="Pesquisar" />
+      <Button fx:id="pesquisar" layoutX="545.0" layoutY="38.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="26.0" text="Pesquisar" />
       <Label layoutX="208.0" layoutY="14.0" prefHeight="17.0" prefWidth="82.0" text="ESTOQUE">
          <font>
             <Font name="System Bold" size="14.0" />

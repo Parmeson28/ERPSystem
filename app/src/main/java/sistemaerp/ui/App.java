@@ -8,10 +8,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import sistemaerp.inventory.InventoryManagement;
 
 public class App extends Application{
     @Override
     public void start(Stage stage) {
+
+        InventoryManagement management = new InventoryManagement();
+        management.verifyFile();
+        management.showItems();
 
         Parent root;
         try {
