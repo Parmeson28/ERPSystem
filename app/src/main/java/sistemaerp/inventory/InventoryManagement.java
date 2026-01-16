@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class InventoryManagement {
 
-    private String filePath = "\\SistemaERP\\app\\src\\main\\java\\sistemaerp\\inventory\\inventory.txt";
+    private String filePath = "\\ERPSystem\\app\\src\\main\\java\\sistemaerp\\inventory\\inventory.txt";
     BufferedReader reader;
     BufferedWriter writer;
     String line;
