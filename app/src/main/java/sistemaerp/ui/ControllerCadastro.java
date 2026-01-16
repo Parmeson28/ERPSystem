@@ -26,10 +26,16 @@ public class ControllerCadastro {
    InventoryManagement management = new InventoryManagement();
 
    public void takeText(ActionEvent e){
-        String description = descricao.getText(); 
-        String itemId = codigo.getText();
+         String description = descricao.getText(); 
+         String itemId = codigo.getText();
 
-        management.registerItems(description, itemId, 0);
+         if(!description.strip().equals("") && !itemId.strip().equals("")){
+            management.registerItems(description, itemId, 0);
+         }
+            
+         
+         descricao.setText("");
+         codigo.setText("");
    }
 
    public void switchMain(ActionEvent event) throws IOException{
@@ -39,6 +45,8 @@ public class ControllerCadastro {
 
       scene = new Scene(root);
 
+
+      management.showItems();
 
       stage.setScene(scene);
       stage.show();

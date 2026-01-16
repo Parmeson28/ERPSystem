@@ -56,7 +56,7 @@ public class InventoryManagement {
         try {
             writer = new BufferedWriter(new FileWriter(filePath, true));
             
-            line = description+";"+id+";"+quantity;
+            line = id+";"+description+";"+quantity;
 
             writer.write(line);
             writer.newLine();
