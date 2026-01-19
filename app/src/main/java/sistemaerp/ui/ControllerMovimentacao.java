@@ -4,21 +4,20 @@ import java.io.IOException;
 
 import javafx.event.ActionEvent;
 
-public class ControllerVistaExplodida {
-
+public class ControllerMovimentacao {
 
     ControllerMudarTela mudarTela = new ControllerMudarTela();
 
     public void switchMain(ActionEvent event) throws IOException{
         mudarTela.switchMain(event);
-     }
-
-
-   public void switchCadastro(ActionEvent event) throws IOException{
+    }
+    
+    public void switchCadastro(ActionEvent event) throws IOException{
         mudarTela.switchCadastro(event);
     }
 
-    public void switchMovimentacao(ActionEvent event) throws IOException{
-        mudarTela.switchMovimentacao(event);
-     }
+    public void switchVistas(ActionEvent event) throws IOException{
+        mudarTela.switchVistas(event);
+    }
+
 }

@@ -25,5 +25,6 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
+      <Button layoutX="14.0" layoutY="200.0" mnemonicParsing="false" onAction="#switchMovimentacao" prefHeight="38.0" prefWidth="169.0" text="Movimentação de Estoque" />
    </children>
 </AnchorPane>

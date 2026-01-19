@@ -61,4 +61,18 @@ public class ControllerMudarTela {
         stage.show();
      }
 
+     public void switchMovimentacao(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("/stockMovement.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+  
+  
+        scene = new Scene(root);
+  
+  
+        management.showItems();
+  
+        stage.setScene(scene);
+        stage.show();
+     }
+
 }

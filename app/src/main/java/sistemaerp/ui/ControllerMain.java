@@ -19,4 +19,8 @@ public class ControllerMain {
       mudarTela.switchVistas(event);
    }
 
+   public void switchMovimentacao(ActionEvent event) throws IOException{
+      mudarTela.switchMovimentacao(event);
+   }
+
 }

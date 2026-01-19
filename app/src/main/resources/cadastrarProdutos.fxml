@@ -27,5 +27,6 @@
          </font>
       </Label>
       <ChoiceBox layoutX="218.0" layoutY="200.0" prefWidth="150.0" />
+      <Button layoutX="14.0" layoutY="194.0" mnemonicParsing="false" onAction="#switchMovimentacao" prefHeight="38.0" prefWidth="169.0" text="Movimentação de Estoque" />
    </children>
 </AnchorPane>
