@@ -7,6 +7,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
 public class InventoryManagement {
 
     private String filePath = "\\ERPSystem\\app\\src\\main\\java\\sistemaerp\\inventory\\inventory.txt";
@@ -56,10 +58,17 @@ public class InventoryManagement {
         try {
             writer = new BufferedWriter(new FileWriter(filePath, true));
             
-            line = id+";"+description+";"+quantity;
 
-            writer.write(line);
-            writer.newLine();
+            if(!description.strip().equals("") && !id.strip().equals("")){
+
+                line = id+";"+description+";"+quantity;
+
+                writer.write(line);
+                writer.newLine();
+            }else{
+                JOptionPane.showMessageDialog(null, "Invalido");
+            }
+           
 
             writer.flush();
             writer.close();

@@ -3,10 +3,13 @@ package sistemaerp.ui;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import sistemaerp.inventory.InventoryManagement;
 
 public class ControllerCadastro {
+
+   @FXML
     
    private TextField descricao, codigo;
 
@@ -18,11 +21,8 @@ public class ControllerCadastro {
          String description = descricao.getText(); 
          String itemId = codigo.getText();
 
-         if(!description.strip().equals("") && !itemId.strip().equals("")){
-            management.registerItems(description, itemId, 0);
-         }
-            
-         
+         management.registerItems(description, itemId, 0);
+
          descricao.setText("");
          codigo.setText("");
    }
