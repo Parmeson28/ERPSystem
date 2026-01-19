@@ -15,7 +15,7 @@
       <Line endX="-32.0" endY="262.0" layoutX="232.0" layoutY="138.0" startX="-32.0" startY="-138.0" strokeWidth="2.0" />
       <Line endX="294.0" layoutX="307.0" layoutY="75.0" startX="-106.5" strokeWidth="2.0" />
       <Button layoutX="14.0" layoutY="38.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="169.0" text="Estoque" />
-      <Button layoutX="16.0" layoutY="91.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="169.0" text="Vistas Explodidas" />
+      <Button layoutX="16.0" layoutY="91.0" mnemonicParsing="false" onAction="#switchVistas" prefHeight="38.0" prefWidth="169.0" text="Vistas Explodidas" />
       <Button layoutX="14.0" layoutY="146.0" mnemonicParsing="false" onAction="#switchCadastro" prefHeight="38.0" prefWidth="169.0" text="Cadastrar Produtos" />
       <TextField fx:id="descricao" layoutX="208.0" layoutY="38.0" prefHeight="25.0" prefWidth="200.0" promptText="Descrição..." />
       <TextField fx:id="codigo" layoutX="418.0" layoutY="38.0" prefHeight="25.0" prefWidth="115.0" promptText="Código..." />
