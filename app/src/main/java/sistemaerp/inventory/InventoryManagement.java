@@ -6,10 +6,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
 
 public class InventoryManagement {
+
+    
+    private ArrayList<String> products = new ArrayList<>();
 
     private String filePath = "\\ERPSystem\\app\\src\\main\\java\\sistemaerp\\inventory\\inventory.txt";
     BufferedReader reader;
@@ -31,7 +34,7 @@ public class InventoryManagement {
 
     }
 
-   public void showItems(){
+   public ArrayList<String> showItems(){
     
         try {
             reader = new BufferedReader(new FileReader(filePath));
@@ -40,15 +43,19 @@ public class InventoryManagement {
 
                 line = line.replace(";", " ");
                 
-                System.out.println(line);
+                products.add(line);
 
             }  
 
+            return products;
+
         }catch(FileNotFoundException e) {
             System.out.println("ERRO");
+            return null;
             
         }catch(IOException a){
             System.out.println("ERROR");
+            return null;
         }
 
    }
@@ -65,8 +72,6 @@ public class InventoryManagement {
 
                 writer.write(line);
                 writer.newLine();
-            }else{
-                JOptionPane.showMessageDialog(null, "Invalido");
             }
            
 
