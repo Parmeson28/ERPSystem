@@ -29,7 +29,6 @@ public class InventoryManagement {
         }catch(FileNotFoundException e){
             System.out.println("Couldn't find file");
             return false;
-    
         }
 
     }
@@ -51,11 +50,11 @@ public class InventoryManagement {
 
         }catch(FileNotFoundException e) {
             System.out.println("ERRO");
-            return null;
+            return new ArrayList<>();
             
         }catch(IOException a){
             System.out.println("ERROR");
-            return null;
+            return new ArrayList<>();
         }
 
    }
@@ -84,6 +83,34 @@ public class InventoryManagement {
         }catch(IOException a){
             System.out.println("ERROR");
         }
+   }
+
+
+   public void searchForItem(String description, String id){
+
+        try {
+            reader = new BufferedReader(new FileReader(filePath));
+
+            while((line = reader.readLine()) != null){
+
+                line = line.replace(";", " ");
+                String[] lineArray = line.split(" ");
+
+                if(lineArray[0].equals(id) || lineArray[1].equals(description)){
+                    System.out.println("DEu boa");
+                }else{
+                    System.out.println("Nem pa");
+                }
+                
+            }  
+
+        }catch(FileNotFoundException e) {
+            System.out.println("Games");
+            
+        }catch(IOException a){
+            System.out.println("Nao games");
+        }
+
    }
 
 }

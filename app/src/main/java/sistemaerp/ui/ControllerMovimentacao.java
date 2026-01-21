@@ -3,10 +3,34 @@ package sistemaerp.ui;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import sistemaerp.inventory.InventoryManagement;
 
 public class ControllerMovimentacao {
 
+    @FXML
+    private Label itemName;
+    @FXML
+    private TextField estoqueAtual, novoEstoque, descricao, codigo;
+    @FXML
+    Button pesquisar;
+
     ControllerMudarTela mudarTela = new ControllerMudarTela();
+    InventoryManagement management = new InventoryManagement();
+    
+    @FXML
+    public void searchItem(ActionEvent event){
+        String item = itemName.getText();
+        String itemCodigo = codigo.getText();
+
+        String estoqueA = estoqueAtual.getText();
+        String estoqueN = novoEstoque.getText();
+
+        management.searchForItem(item, itemCodigo);
+    }
 
     public void switchMain(ActionEvent event) throws IOException{
         mudarTela.switchMain(event);
