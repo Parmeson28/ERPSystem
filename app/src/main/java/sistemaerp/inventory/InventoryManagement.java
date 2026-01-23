@@ -3,10 +3,11 @@ package sistemaerp.inventory;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import sistemaerp.database.DatabaseHandler;
 
 
 public class InventoryManagement {
@@ -14,29 +15,26 @@ public class InventoryManagement {
     
     private ArrayList<String> products = new ArrayList<>();
 
-    private String filePath = "\\ERPSystem\\app\\src\\main\\java\\sistemaerp\\inventory\\inventory.txt";
+    private String filePath = "app\\src\\main\\resources\\inventory.txt";
+
     BufferedReader reader;
     BufferedWriter writer;
     String line;
 
+    DatabaseHandler db = new DatabaseHandler();
+
     public boolean verifyFile(){
-        
-        try{
-            reader = new BufferedReader(new FileReader(filePath));
-            System.out.println("All worked fine");
-            return true;
-    
-        }catch(FileNotFoundException e){
-            System.out.println("Couldn't find file");
-            return false;
-        }
+
+        DatabaseHandler.dbConnection();
+
+        System.out.println("All worked fine");
+        return true;
 
     }
 
    public ArrayList<String> showItems(){
     
         try {
-            reader = new BufferedReader(new FileReader(filePath));
 
             while((line = reader.readLine()) != null){
 
@@ -89,7 +87,6 @@ public class InventoryManagement {
    public void searchForItem(String description, String id){
 
         try {
-            reader = new BufferedReader(new FileReader(filePath));
 
             while((line = reader.readLine()) != null){
 

@@ -1,3 +1,17 @@
 {
-    "java.configuration.updateBuildConfiguration": "automatic"
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "sqltools.connections": [
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "ERPConnection",
+            "database": "sistemaerpdb",
+            "username": "postgres",
+            "password": "root",
+            "connectionTimeout": 30
+        }
+    ]
 }
