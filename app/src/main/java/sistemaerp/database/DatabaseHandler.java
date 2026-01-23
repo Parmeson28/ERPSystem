@@ -31,7 +31,7 @@ public class DatabaseHandler {
         String user = "postgres";
         String password = "root";
 
-        String sql = "CREATE TABLE IF NOT EXISTS produtos(productId INT PRIMARY KEY, description VARCHAR(25), sku VARCHAR(25), qtd INT, maquina VARCHAR(25))";
+        String sql = "ALTER TABLE produtos ALTER COLUMN productId ADD GENERATED ALWAYS AS IDENTITY;";
 
         try {
             Connection conn = DriverManager.getConnection(url, user, password);

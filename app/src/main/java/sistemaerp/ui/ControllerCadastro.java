@@ -10,8 +10,7 @@ import sistemaerp.inventory.InventoryManagement;
 public class ControllerCadastro {
 
    @FXML
-    
-   private TextField descricao, codigo;
+   private TextField descricao, codigo, equipamento;
 
    InventoryManagement management = new InventoryManagement();
 
@@ -20,11 +19,14 @@ public class ControllerCadastro {
    public void takeText(ActionEvent e){
          String description = descricao.getText(); 
          String itemId = codigo.getText();
+         String machinery = equipamento.getText();
 
-         management.registerItems(description, itemId, 0);
+
+         management.registerItems(description, itemId, 0, machinery);
 
          descricao.setText("");
          codigo.setText("");
+         equipamento.setText("");
    }
 
    public void switchMain(ActionEvent event) throws IOException{

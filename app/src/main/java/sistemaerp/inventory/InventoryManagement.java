@@ -32,11 +32,19 @@ public class InventoryManagement {
    }
 
 
-   public void registerItems(String description, String id, int quantity, String maquina){
-    
-        db.registerProducts(description, id, quantity, maquina);
+     public void registerItems(String description, String id, int quantity, String machinery){
+     
 
-   }
+          if(!description.strip().equals("") || !id.strip().equals("") || !machinery.strip().equals("")){
+
+               db.registerProducts(description, id, quantity, machinery);
+               System.out.println("Item foi enviado para cadastro");
+
+          }else{
+               System.out.println("Campos incompletos");
+          }
+
+     }
 
 
    public void searchForItem(String description, String id){
