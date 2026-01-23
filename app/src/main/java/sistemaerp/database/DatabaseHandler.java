@@ -7,9 +7,9 @@ import java.sql.SQLException;
 public class DatabaseHandler {
 
         public static void dbConnection(){
-            String url = "jdbc:postgresql://localhost:5432/sistemaerpdb";
-            String user = "postgres"; // seu usuário
-            String password = "root"; // sua senha
+            String url = "jdbc:postgresql://192.168.100.80:5432/sistemaerpdb";
+            String user = "postgres";
+            String password = "root";
 
             try {
                 Connection conn = DriverManager.getConnection(url, user, password);
