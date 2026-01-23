@@ -2,9 +2,6 @@ package sistemaerp.inventory;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import sistemaerp.database.DatabaseHandler;
@@ -23,7 +20,7 @@ public class InventoryManagement {
 
     public boolean verifyFile(){
 
-        DatabaseHandler.dbConnection();
+        db.dbConnection();
 
         System.out.println("All worked fine");
         return true;
@@ -35,8 +32,10 @@ public class InventoryManagement {
    }
 
 
-   public void registerItems(String description, String id, int quantity){
-        
+   public void registerItems(String description, String id, int quantity, String maquina){
+    
+        db.registerProducts(description, id, quantity, maquina);
+
    }
 
 

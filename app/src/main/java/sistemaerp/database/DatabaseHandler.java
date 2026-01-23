@@ -2,12 +2,13 @@ package sistemaerp.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseHandler {
 
-    public static void dbConnection(){
+    public void dbConnection(){
         String url = "jdbc:postgresql://26.131.56.31:5432/sistemaerpdb";
         String user = "postgres";
         String password = "root";
@@ -23,14 +24,14 @@ public class DatabaseHandler {
     }
 
 
-    //There's already a table created called "usuarios"
-    public static void createTable(){
+    //There's already a table created called "usuarios" and one called "produtos"
+    public void createTable(){
 
         String url = "jdbc:postgresql://26.131.56.31:5432/sistemaerpdb";
         String user = "postgres";
         String password = "root";
 
-        String sql = "CREATE TABLE IF NOT EXISTS usuarios(userId INT PRIMARY KEY, name VARCHAR(25), area VARCHAR(25))";
+        String sql = "CREATE TABLE IF NOT EXISTS produtos(productId INT PRIMARY KEY, description VARCHAR(25), sku VARCHAR(25), qtd INT, maquina VARCHAR(25))";
 
         try {
             Connection conn = DriverManager.getConnection(url, user, password);
@@ -47,6 +48,35 @@ public class DatabaseHandler {
             e.printStackTrace();
         }
 
+    }
+
+    public void registerProducts(String description, String sku, int quantity, String maquina){
+
+        String url = "jdbc:postgresql://26.131.56.31:5432/sistemaerpdb";
+        String user = "postgres";
+        String password = "root";
+
+        String sql = "INSERT INTO produtos (description, sku,  qtd, maquina) VALUES (?, ?, ?, ?)";
+
+        try {
+            Connection conn = DriverManager.getConnection(url, user, password);
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, description);
+            stmt.setString(2, sku);
+            stmt.setInt(3, quantity);
+            stmt.setString(4, maquina);
+
+            stmt.executeUpdate();
+
+            System.out.println("Conectado ao PostgreSQL com sucesso! Produto cadastrado.");
+            conn.close();
+
+        } catch (SQLException e) {
+            System.out.println("Erro na conexão! Não foi possível cadastrar o produto.");
+            e.printStackTrace();
+        }
     }
 
 }
