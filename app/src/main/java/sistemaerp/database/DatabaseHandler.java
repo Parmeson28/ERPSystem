@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DatabaseHandler {
 
         public static void dbConnection(){
-            String url = "jdbc:postgresql://192.168.100.80:5432/sistemaerpdb";
+            String url = "jdbc:postgresql://26.131.56.31:5432/sistemaerpdb";
             String user = "postgres";
             String password = "root";
 

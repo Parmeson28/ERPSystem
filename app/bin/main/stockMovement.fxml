@@ -19,12 +19,15 @@
       <Button layoutX="14.0" layoutY="146.0" mnemonicParsing="false" onAction="#switchCadastro" prefHeight="38.0" prefWidth="169.0" text="Cadastrar Produtos" />
       <TextField fx:id="descricao" layoutX="208.0" layoutY="38.0" prefHeight="25.0" prefWidth="200.0" promptText="Descrição..." />
       <TextField fx:id="codigo" layoutX="418.0" layoutY="38.0" prefHeight="25.0" prefWidth="115.0" promptText="Código..." />
-      <Button fx:id="pesquisar" layoutX="545.0" layoutY="38.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="26.0" text="Pesquisar" />
+      <Button fx:id="pesquisar" layoutX="545.0" layoutY="38.0" mnemonicParsing="false" onAction="#searchItem" prefHeight="25.0" prefWidth="26.0" text="Pesquisar" />
       <Label layoutX="208.0" layoutY="14.0" prefHeight="20.0" prefWidth="192.0" text="Movimentação de Estoque">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
       <Button layoutX="16.0" layoutY="200.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="169.0" text="Movimentação de Estoque" />
+      <Label fx:id="itemName" layoutX="208.0" layoutY="82.0" prefHeight="26.0" prefWidth="170.0" text="Item..." />
+      <TextField fx:id="estoqueAtual" layoutX="208.0" layoutY="116.0" prefHeight="26.0" prefWidth="98.0" promptText="Estoque atual..." />
+      <TextField fx:id="novoEstoque" layoutX="208.0" layoutY="152.0" prefHeight="26.0" prefWidth="98.0" promptText="Novo estoque..." />
    </children>
 </AnchorPane>
