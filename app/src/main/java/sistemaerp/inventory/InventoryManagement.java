@@ -47,9 +47,14 @@ public class InventoryManagement {
      }
 
 
-   public void searchForItem(String description, String id){
+     public void searchForItem(String description, String id){
 
-        
-   }
+          
+     }
+
+     public void showItem(){
+
+          System.out.println(db.showItems());
+     }
 
 }

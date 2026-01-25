@@ -3,10 +3,14 @@ package sistemaerp.database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class DatabaseHandler {
+
+    public ArrayList<String> products = new ArrayList<>();
 
     public void dbConnection(){
         String url = "jdbc:postgresql://26.131.56.31:5432/sistemaerpdb";
@@ -77,6 +81,40 @@ public class DatabaseHandler {
             System.out.println("Erro na conexão! Não foi possível cadastrar o produto.");
             e.printStackTrace();
         }
+    }
+
+
+    public ArrayList<String> showItems(){
+
+        String url = "jdbc:postgresql://26.131.56.31:5432/sistemaerpdb";
+        String user = "postgres";
+        String password = "root";
+
+        String sql = "SELECT * FROM produtos";
+
+        try {
+            Connection conn = DriverManager.getConnection(url, user, password);
+
+            Statement stmt = conn.createStatement();
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next()){
+
+                products.add(rs.getString("description") + " " + rs.getString("sku") + " " + rs.getString("qtd"));
+            
+            }
+
+            System.out.println("Conectado ao PostgreSQL com sucesso! Mostrando items.");
+            conn.close();
+
+            return products;
+        } catch (SQLException e) {
+            System.out.println("Erro na conexão! Não foi possível mostrar os items.");
+            e.printStackTrace();
+            return new ArrayList<String>();
+        }
+
     }
 
 }

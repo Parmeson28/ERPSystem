@@ -28,6 +28,8 @@ public class ControllerMain {
    @FXML
    public void initialize(){
 
+      management.showItem();
+
       productsView.getItems().addAll(management.showItems());
             productsView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
 
