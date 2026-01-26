@@ -28,18 +28,16 @@ public class ControllerMain {
    @FXML
    public void initialize(){
 
-      management.showItem();
+      productsView.getItems().addAll(management.showItem());
+      productsView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
 
-      productsView.getItems().addAll(management.showItems());
-            productsView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
+            @Override
+            public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2){
 
-                @Override
-                public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2){
-
-                    currentProduct = productsView.getSelectionModel().getSelectedItem();
-                    myLabel.setText(currentProduct);
-                }
-            });
+               currentProduct = productsView.getSelectionModel().getSelectedItem();
+               myLabel.setText(currentProduct);
+            }
+      });
    }
 
    public void switchCadastro(ActionEvent event) throws IOException{

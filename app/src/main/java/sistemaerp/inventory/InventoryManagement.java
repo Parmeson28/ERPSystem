@@ -52,9 +52,14 @@ public class InventoryManagement {
           
      }
 
-     public void showItem(){
+     public ArrayList<String> showItem(){
 
           System.out.println(db.showItems());
+
+          products = db.showItems();
+
+          return products;
+
      }
 
 }
