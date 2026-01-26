@@ -7,7 +7,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import sistemaerp.inventory.InventoryManagement;
 
@@ -16,8 +15,6 @@ public class ControllerMain {
 
     @FXML
     private ListView<String> productsView;
-    @FXML
-    private Label myLabel;
     private String currentProduct;
     
 
@@ -35,7 +32,7 @@ public class ControllerMain {
             public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2){
 
                currentProduct = productsView.getSelectionModel().getSelectedItem();
-               myLabel.setText(currentProduct);
+               System.out.println(currentProduct);
             }
       });
    }
