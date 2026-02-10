@@ -16,7 +16,7 @@ public class App extends Application{
 
         InventoryManagement management = new InventoryManagement();
         management.verifyFile();
-        management.showItems();
+        management.showItem();
 
         Parent root;
         try {
@@ -25,7 +25,6 @@ public class App extends Application{
             Scene scene = new Scene(root, 600, 600, Color.SKYBLUE);
 
             stage.setTitle("ERP System");
-
 
 
             stage.setScene(scene);

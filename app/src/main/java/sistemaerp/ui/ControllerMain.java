@@ -8,6 +8,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import sistemaerp.inventory.InventoryManagement;
 
 public class ControllerMain {
@@ -15,6 +16,8 @@ public class ControllerMain {
 
     @FXML
     private ListView<String> productsView;
+    @FXML
+    private TextField descricao, codigo;
     private String currentProduct;
     
 
@@ -33,8 +36,16 @@ public class ControllerMain {
 
                currentProduct = productsView.getSelectionModel().getSelectedItem();
                System.out.println(currentProduct);
+
             }
       });
+   }
+
+   @FXML
+   public void searchForItem(ActionEvent event){
+
+      management.searchForItem(descricao.getText(), codigo.getText());
+
    }
 
    public void switchCadastro(ActionEvent event) throws IOException{

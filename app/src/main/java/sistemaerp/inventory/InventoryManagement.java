@@ -27,10 +27,6 @@ public class InventoryManagement {
 
     }
 
-   public ArrayList<String> showItems(){
-        return new ArrayList<String>();
-   }
-
 
      public void registerItems(String description, String id, int quantity, String machinery){
      
@@ -49,17 +45,20 @@ public class InventoryManagement {
 
      public void searchForItem(String description, String id){
 
-          
+          products = db.showItems();
+
+          for(String a : products){
+
+               System.out.println(a);
+          }
+
      }
 
      public ArrayList<String> showItem(){
 
-          System.out.println(db.showItems());
-
           products = db.showItems();
 
           return products;
-
      }
 
 }

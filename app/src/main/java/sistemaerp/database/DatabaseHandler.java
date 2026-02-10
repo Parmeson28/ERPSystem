@@ -8,14 +8,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 public class DatabaseHandler {
 
     public ArrayList<String> products = new ArrayList<>();
+    private Dotenv dotenv = Dotenv.load();
 
     public void dbConnection(){
-        String url = "jdbc:postgresql://26.131.56.31:5432/sistemaerpdb";
-        String user = "postgres";
-        String password = "root";
+        String url = dotenv.get("DB_URL");
+        String user = dotenv.get("DB_USER");
+        String password = dotenv.get("DB_PASSWORD");
 
         try {
             Connection conn = DriverManager.getConnection(url, user, password);
@@ -31,9 +34,9 @@ public class DatabaseHandler {
     //There's already a table created called "usuarios" and one called "produtos"
     public void createTable(){
 
-        String url = "jdbc:postgresql://26.131.56.31:5432/sistemaerpdb";
-        String user = "postgres";
-        String password = "root";
+        String url = dotenv.get("DB_URL");
+        String user = dotenv.get("DB_USER");
+        String password = dotenv.get("DB_PASSWORD");
 
         String sql = "ALTER TABLE produtos ALTER COLUMN productId ADD GENERATED ALWAYS AS IDENTITY;";
 
@@ -56,9 +59,9 @@ public class DatabaseHandler {
 
     public void registerProducts(String description, String sku, int quantity, String maquina){
 
-        String url = "jdbc:postgresql://26.131.56.31:5432/sistemaerpdb";
-        String user = "postgres";
-        String password = "root";
+        String url = dotenv.get("DB_URL");
+        String user = dotenv.get("DB_USER");
+        String password = dotenv.get("DB_PASSWORD");
 
         String sql = "INSERT INTO produtos (description, sku,  qtd, maquina) VALUES (?, ?, ?, ?)";
 
@@ -86,9 +89,9 @@ public class DatabaseHandler {
 
     public ArrayList<String> showItems(){
 
-        String url = "jdbc:postgresql://26.131.56.31:5432/sistemaerpdb";
-        String user = "postgres";
-        String password = "root";
+        String url = dotenv.get("DB_URL");
+        String user = dotenv.get("DB_USER");
+        String password = dotenv.get("DB_PASSWORD");
 
         String sql = "SELECT * FROM produtos";
 
