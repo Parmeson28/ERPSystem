@@ -21,9 +21,11 @@ public class ControllerMovimentacao {
     ControllerMudarTela mudarTela = new ControllerMudarTela();
     InventoryManagement management = new InventoryManagement();
     
+
+
     @FXML
     public void searchItem(ActionEvent event){
-        String item = itemName.getText();
+        String item = descricao.getText();
         String itemCodigo = codigo.getText();
 
         String estoqueA = estoqueAtual.getText();
@@ -31,6 +33,9 @@ public class ControllerMovimentacao {
 
         management.searchForItem(item, itemCodigo);
     }
+
+
+
 
     public void switchMain(ActionEvent event) throws IOException{
         mudarTela.switchMain(event);

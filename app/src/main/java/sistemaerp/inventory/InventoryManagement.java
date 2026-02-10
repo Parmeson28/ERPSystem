@@ -3,6 +3,7 @@ package sistemaerp.inventory;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import sistemaerp.database.DatabaseHandler;
 
@@ -43,13 +44,35 @@ public class InventoryManagement {
      }
 
 
-     public void searchForItem(String description, String id){
+     public void searchForItem(String description, String sku){
 
           products = db.showItems();
 
+          boolean foundItem = false;
+
+          ArrayList<String> c = new ArrayList<>();
+
           for(String a : products){
 
-               System.out.println(a);
+               String[] b = a.split(" ");
+               
+
+               if(b[0].equals(description) && b[1].equals(sku)){
+                    System.out.println(a);
+                    foundItem = true;
+               }
+
+               c.add(a);
+          }
+
+          if(foundItem == false){
+               for(String a : c){
+                    String[] b = a.split(" ");
+
+                    if(b[0].equals(description) || b[1].equals(sku)){
+                         System.out.println(a);
+                    }
+               }
           }
 
      }
