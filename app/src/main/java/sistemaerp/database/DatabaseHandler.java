@@ -10,6 +10,9 @@ import java.util.ArrayList;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
+
+//This class handles the database communication
+//Program logic should be avoided here and put into Inventory Management
 public class DatabaseHandler {
 
     public ArrayList<String> products = new ArrayList<>();
@@ -32,6 +35,7 @@ public class DatabaseHandler {
 
 
     //There's already a table created called "usuarios" and one called "produtos"
+    //This function is not widely called on the program, only when it's necessary to create or change tables
     public void createTable(){
 
         String url = dotenv.get("DB_URL");
@@ -57,6 +61,7 @@ public class DatabaseHandler {
 
     }
 
+    //Register the products into the database
     public void registerProducts(String description, String sku, int quantity, String maquina){
 
         String url = dotenv.get("DB_URL");
@@ -87,6 +92,7 @@ public class DatabaseHandler {
     }
 
 
+    //Goes through all the data on the database to display all the products
     public ArrayList<String> showItems(){
 
         String url = dotenv.get("DB_URL");

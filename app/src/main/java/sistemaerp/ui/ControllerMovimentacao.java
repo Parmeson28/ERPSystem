@@ -28,10 +28,14 @@ public class ControllerMovimentacao {
         String item = descricao.getText();
         String itemCodigo = codigo.getText();
 
-        String estoqueA = estoqueAtual.getText();
+        String[] product = management.searchForItem(item, itemCodigo);
+
+        estoqueAtual.setText(product[2]);
+        estoqueAtual.setEditable(false);
+
         String estoqueN = novoEstoque.getText();
 
-        management.searchForItem(item, itemCodigo);
+        
     }
 
 

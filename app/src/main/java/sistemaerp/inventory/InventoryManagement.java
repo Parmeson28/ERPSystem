@@ -8,6 +8,8 @@ import java.util.List;
 import sistemaerp.database.DatabaseHandler;
 
 
+//This class handles the inventory logic of the program
+//Logic related to parts go here
 public class InventoryManagement {
 
     
@@ -19,6 +21,7 @@ public class InventoryManagement {
 
     DatabaseHandler db = new DatabaseHandler();
 
+    //Verifies if the connection with the databse is happening with no issues
     public boolean verifyFile(){
 
         db.dbConnection();
@@ -28,7 +31,8 @@ public class InventoryManagement {
 
     }
 
-
+    //Register the items on the database if all the fields are correctly filled
+    // <------------ ******** MUST DO: Not allow parts to be registered under the same SKU ******** ------------>
      public void registerItems(String description, String id, int quantity, String machinery){
      
 
@@ -43,28 +47,32 @@ public class InventoryManagement {
 
      }
 
-
-     public void searchForItem(String description, String sku){
+     //Searchs for an item that matches EXACTLY description AND sku
+     //Need to change that to make search accept:
+     //Only sku OR only name (opening a new window for selecting the correct item)
+     public String[] searchForItem(String description, String sku){
 
           products = db.showItems();
 
           boolean foundItem = false;
 
-          ArrayList<String> c = new ArrayList<>();
-
           for(String a : products){
 
                String[] b = a.split(" ");
-               
 
                if(b[0].equals(description) && b[1].equals(sku)){
-                    System.out.println(a);
-                    foundItem = true;
-               }
 
-               c.add(a);
+                    foundItem = true;
+
+                    return b;
+               }
           }
 
+          return null;
+
+     }
+          /*
+          MAYBE USE LATER
           if(foundItem == false){
                for(String a : c){
                     String[] b = a.split(" ");
@@ -75,8 +83,14 @@ public class InventoryManagement {
                }
           }
 
+          */
+
+     public void changeItemQuantity(String description, String sku){
+
      }
 
+     //Shows every item on the database
+     //Only used for tests
      public ArrayList<String> showItem(){
 
           products = db.showItems();
@@ -85,3 +99,5 @@ public class InventoryManagement {
      }
 
 }
+
+
