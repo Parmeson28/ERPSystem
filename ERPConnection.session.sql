@@ -1,1 +1,1 @@
-DELETE FROM produtos
+SELECT * FROM produtos

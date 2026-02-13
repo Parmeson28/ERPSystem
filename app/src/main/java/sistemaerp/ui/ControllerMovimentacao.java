@@ -16,7 +16,7 @@ public class ControllerMovimentacao {
     @FXML
     private TextField estoqueAtual, novoEstoque, descricao, codigo;
     @FXML
-    Button pesquisar;
+    Button pesquisar, alterar;
 
     ControllerMudarTela mudarTela = new ControllerMudarTela();
     InventoryManagement management = new InventoryManagement();
@@ -31,14 +31,31 @@ public class ControllerMovimentacao {
         String[] product = management.searchForItem(item, itemCodigo);
 
         estoqueAtual.setText(product[2]);
-        estoqueAtual.setEditable(false);
+        estoqueAtual.setEditable(true);
+    }
+
+    @FXML
+    public void alterQuantity(ActionEvent event) throws IOException{
 
         String estoqueN = novoEstoque.getText();
 
-        
+        if(estoqueN != null && !estoqueN.equals("")){
+            int n = Integer.parseInt(estoqueN);
+
+            String item = descricao.getText();
+            String itemCodigo = codigo.getText();
+
+            management.changeItemQuantity(item, itemCodigo, n);
+
+            estoqueAtual.setText(estoqueN);
+            
+            novoEstoque.setText("");
+
+        }else{
+            System.out.println("Valor nulo para quantidade!");
+        }
+
     }
-
-
 
 
     public void switchMain(ActionEvent event) throws IOException{

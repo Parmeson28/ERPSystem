@@ -29,5 +29,6 @@
       <Label fx:id="itemName" layoutX="208.0" layoutY="82.0" prefHeight="26.0" prefWidth="170.0" text="Item..." />
       <TextField fx:id="estoqueAtual" layoutX="208.0" layoutY="116.0" prefHeight="26.0" prefWidth="98.0" promptText="Estoque atual..." />
       <TextField fx:id="novoEstoque" layoutX="208.0" layoutY="152.0" prefHeight="26.0" prefWidth="98.0" promptText="Novo estoque..." />
+      <Button fx:id="alterar" layoutX="208.0" layoutY="193.0" mnemonicParsing="false" onAction="#alterQuantity" prefHeight="38.0" prefWidth="98.0" text="Alterar" />
    </children>
 </AnchorPane>

@@ -18,10 +18,11 @@ public class DatabaseHandler {
     public ArrayList<String> products = new ArrayList<>();
     private Dotenv dotenv = Dotenv.load();
 
+    String url = dotenv.get("DB_URL");
+    String user = dotenv.get("DB_USER");
+    String password = dotenv.get("DB_PASSWORD");
+
     public void dbConnection(){
-        String url = dotenv.get("DB_URL");
-        String user = dotenv.get("DB_USER");
-        String password = dotenv.get("DB_PASSWORD");
 
         try {
             Connection conn = DriverManager.getConnection(url, user, password);
@@ -37,10 +38,6 @@ public class DatabaseHandler {
     //There's already a table created called "usuarios" and one called "produtos"
     //This function is not widely called on the program, only when it's necessary to create or change tables
     public void createTable(){
-
-        String url = dotenv.get("DB_URL");
-        String user = dotenv.get("DB_USER");
-        String password = dotenv.get("DB_PASSWORD");
 
         String sql = "ALTER TABLE produtos ALTER COLUMN productId ADD GENERATED ALWAYS AS IDENTITY;";
 
@@ -63,10 +60,6 @@ public class DatabaseHandler {
 
     //Register the products into the database
     public void registerProducts(String description, String sku, int quantity, String maquina){
-
-        String url = dotenv.get("DB_URL");
-        String user = dotenv.get("DB_USER");
-        String password = dotenv.get("DB_PASSWORD");
 
         String sql = "INSERT INTO produtos (description, sku,  qtd, maquina) VALUES (?, ?, ?, ?)";
 
@@ -91,13 +84,34 @@ public class DatabaseHandler {
         }
     }
 
+    //Fix later
+    public void alterProductQuant(String description, String mSku, int quantity){
+
+        String sql = "UPDATE produtos SET qtd = ? WHERE sku = ?"; 
+
+        try {
+            Connection conn = DriverManager.getConnection(url, user, password);
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1, quantity);
+            stmt.setString(2, mSku);
+
+            stmt.executeUpdate();
+
+            System.out.println("Conectado ao PostgreSQL com sucesso! Quantidade alterada.");
+            conn.close();
+
+        } catch (SQLException e) {
+            System.out.println("Erro na conexão! Não foi possível alterar quantidade.");
+            e.printStackTrace();
+        }
+
+
+    }
 
     //Goes through all the data on the database to display all the products
     public ArrayList<String> showItems(){
-
-        String url = dotenv.get("DB_URL");
-        String user = dotenv.get("DB_USER");
-        String password = dotenv.get("DB_PASSWORD");
 
         String sql = "SELECT * FROM produtos";
 

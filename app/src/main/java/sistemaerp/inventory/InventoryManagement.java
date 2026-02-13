@@ -85,7 +85,9 @@ public class InventoryManagement {
 
           */
 
-     public void changeItemQuantity(String description, String sku){
+     public void changeItemQuantity(String description, String sku, int quantity){
+
+          db.alterProductQuant(description, sku, quantity);
 
      }
 
