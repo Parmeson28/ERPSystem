@@ -9,6 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import sistemaerp.inventory.InventoryManagement;
 
+import sistemaerp.util.ValidationUtils;
+
 public class ControllerMovimentacao {
 
     @FXML
@@ -20,8 +22,8 @@ public class ControllerMovimentacao {
 
     ControllerMudarTela mudarTela = new ControllerMudarTela();
     InventoryManagement management = new InventoryManagement();
+    ValidationUtils validation = new ValidationUtils();
     
-
 
     @FXML
     public void searchItem(ActionEvent event){
@@ -35,21 +37,26 @@ public class ControllerMovimentacao {
     }
 
     @FXML
-    public void alterQuantity(ActionEvent event) throws IOException{
+    public void alterQuantity(ActionEvent event){
 
         String estoqueN = novoEstoque.getText();
 
-        if(estoqueN != null && !estoqueN.equals("")){
+        if(validation.validateNum(estoqueN)){
+
             int n = Integer.parseInt(estoqueN);
 
-            String item = descricao.getText();
-            String itemCodigo = codigo.getText();
+            if(n < 0){
+                System.out.println("Valor não pode ser negativo");
+            }else{
+                String item = descricao.getText();
+                String itemCodigo = codigo.getText();
 
-            management.changeItemQuantity(item, itemCodigo, n);
+                management.changeItemQuantity(item, itemCodigo, n);
 
-            estoqueAtual.setText(estoqueN);
-            
-            novoEstoque.setText("");
+                estoqueAtual.setText(estoqueN);
+                
+                novoEstoque.setText("");
+            }
 
         }else{
             System.out.println("Valor nulo para quantidade!");

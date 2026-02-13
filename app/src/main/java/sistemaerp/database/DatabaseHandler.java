@@ -84,7 +84,7 @@ public class DatabaseHandler {
         }
     }
 
-    //Fix later
+    //Updates the quantity of a specified item in the database
     public void alterProductQuant(String description, String mSku, int quantity){
 
         String sql = "UPDATE produtos SET qtd = ? WHERE sku = ?"; 
