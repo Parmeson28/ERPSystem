@@ -33,7 +33,7 @@ public class ControllerMovimentacao {
         String[] product = management.searchForItem(item, itemCodigo);
 
         estoqueAtual.setText(product[2]);
-        estoqueAtual.setEditable(true);
+        estoqueAtual.setEditable(false);
     }
 
     @FXML
