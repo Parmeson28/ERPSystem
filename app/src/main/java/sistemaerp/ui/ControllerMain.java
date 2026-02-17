@@ -2,6 +2,7 @@ package sistemaerp.ui;
 
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -29,25 +30,45 @@ public class ControllerMain {
    public void initialize(){
 
       productsView.getItems().addAll(management.showItem());
+
       productsView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
 
-            @Override
-            public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2){
+         @Override
+         public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2){
 
-               currentProduct = productsView.getSelectionModel().getSelectedItem();
-               System.out.println(currentProduct);
+            currentProduct = productsView.getSelectionModel().getSelectedItem();
+            System.out.println(currentProduct);
 
-            }
+         }
       });
+
    }
 
    @FXML
    public void searchForItem(ActionEvent event){
 
-      management.searchForItem(descricao.getText(), codigo.getText());
-      mudarTela.openSearchWindow(event);
+      productsView.getItems().clear();
+
+      String[] searchResult = management.searchForItem(descricao.getText(), codigo.getText());
+
+      if(searchResult == null){
+         mudarTela.openSearchWindow(event);
+      }else{
+         System.out.println("Pesquisa deu certo");
+
+         String item = Arrays.toString(searchResult);
+
+         item = item.replace(",", " ");
+         item = item.replace("[", "");
+         item = item.replace("]", "");
+
+         System.out.println(item);
+
+         productsView.getItems().addAll(item);
+      }
 
    }
+
 
    public void switchCadastro(ActionEvent event) throws IOException{
       mudarTela.switchCadastro(event);

@@ -54,22 +54,17 @@ public class InventoryManagement {
 
           products = db.showItems();
 
-          boolean foundItem = false;
-
           for(String a : products){
 
                String[] b = a.split(" ");
 
-               if(b[0].equals(description) && b[1].equals(sku)){
-
-                    foundItem = true;
+               if(b[0].equals(description) && b[1].equals(sku) && !b[0].equals("") && !b[1].equals("")){
 
                     return b;
                }
           }
 
           return null;
-
      }
           /*
           MAYBE USE LATER
