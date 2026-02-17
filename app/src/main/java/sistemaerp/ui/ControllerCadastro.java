@@ -14,7 +14,7 @@ public class ControllerCadastro {
 
    InventoryManagement management = new InventoryManagement();
 
-   ControllerMudarTela mudarTela = new ControllerMudarTela();
+   ControllerTelas mudarTela = new ControllerTelas();
 
    public void takeText(ActionEvent e){
          String description = descricao.getText(); 

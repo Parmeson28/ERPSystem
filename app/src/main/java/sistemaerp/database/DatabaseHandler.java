@@ -107,7 +107,6 @@ public class DatabaseHandler {
             e.printStackTrace();
         }
 
-
     }
 
     //Goes through all the data on the database to display all the products

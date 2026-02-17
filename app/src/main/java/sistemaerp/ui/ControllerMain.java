@@ -21,7 +21,7 @@ public class ControllerMain {
     private String currentProduct;
     
 
-   ControllerMudarTela mudarTela = new ControllerMudarTela();
+   ControllerTelas mudarTela = new ControllerTelas();
    InventoryManagement management = new InventoryManagement();
 
   
@@ -45,6 +45,7 @@ public class ControllerMain {
    public void searchForItem(ActionEvent event){
 
       management.searchForItem(descricao.getText(), codigo.getText());
+      mudarTela.openSearchWindow(event);
 
    }
 

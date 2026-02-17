@@ -2,6 +2,8 @@ package sistemaerp.ui;
 
 import java.io.IOException;
 
+import javax.swing.Action;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class ControllerMudarTela {
+public class ControllerTelas {
 
     //This is a speciffic class for switching window
 
@@ -67,6 +69,26 @@ public class ControllerMudarTela {
   
         stage.setScene(scene);
         stage.show();
+     }
+
+     public void openSearchWindow(ActionEvent event){
+
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/searchWindow.fxml"));
+
+            scene = new Scene(fxmlLoader.load(), 400, 400);
+
+            Stage stage = new Stage();
+            stage.setTitle("Busca de itens");
+
+            stage.setScene(scene);
+            stage.show();
+
+        }catch(IOException e){
+            System.out.println("Could not create new window!");
+        }
+        
      }
 
 }

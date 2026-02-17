@@ -92,7 +92,7 @@ public class InventoryManagement {
      }
 
      //Shows every item on the database
-     //Only used for tests
+     //Used when it is needed to display every item registered
      public ArrayList<String> showItem(){
 
           products = db.showItems();

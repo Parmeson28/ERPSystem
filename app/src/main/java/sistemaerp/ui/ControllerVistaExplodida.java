@@ -7,7 +7,7 @@ import javafx.event.ActionEvent;
 public class ControllerVistaExplodida {
 
 
-    ControllerMudarTela mudarTela = new ControllerMudarTela();
+    ControllerTelas mudarTela = new ControllerTelas();
 
     public void switchMain(ActionEvent event) throws IOException{
         mudarTela.switchMain(event);

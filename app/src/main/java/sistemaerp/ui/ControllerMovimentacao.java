@@ -20,7 +20,7 @@ public class ControllerMovimentacao {
     @FXML
     Button pesquisar, alterar;
 
-    ControllerMudarTela mudarTela = new ControllerMudarTela();
+    ControllerTelas mudarTela = new ControllerTelas();
     InventoryManagement management = new InventoryManagement();
     ValidationUtils validation = new ValidationUtils();
     
