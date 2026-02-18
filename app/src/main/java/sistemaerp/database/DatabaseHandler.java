@@ -15,7 +15,7 @@ import io.github.cdimascio.dotenv.Dotenv;
 //Program logic should be avoided here and put into Inventory Management
 public class DatabaseHandler {
 
-    public ArrayList<String> products = new ArrayList<>();
+    public ArrayList<String[]> products = new ArrayList<>();
     private Dotenv dotenv = Dotenv.load();
 
     String url = dotenv.get("DB_URL");
@@ -110,7 +110,7 @@ public class DatabaseHandler {
     }
 
     //Goes through all the data on the database to display all the products
-    public ArrayList<String> showItems(){
+    public ArrayList<String[]> showItems(){
 
         String sql = "SELECT * FROM produtos";
 
@@ -123,7 +123,9 @@ public class DatabaseHandler {
 
             while(rs.next()){
 
-                products.add(rs.getString("description") + " " + rs.getString("sku") + " " + rs.getString("qtd"));
+                String[] a = {rs.getString("description"), rs.getString("sku"), rs.getString("qtd")};
+
+                products.add(a);
             
             }
 
@@ -134,7 +136,7 @@ public class DatabaseHandler {
         } catch (SQLException e) {
             System.out.println("Erro na conexão! Não foi possível mostrar os items.");
             e.printStackTrace();
-            return new ArrayList<String>();
+            return new ArrayList<String[]>();
         }
 
     }

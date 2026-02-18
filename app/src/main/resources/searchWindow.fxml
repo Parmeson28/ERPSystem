@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemaerp.ui.ControllerSearchWindow">
    <children>
       <Label layoutX="90.0" layoutY="-4.0" prefHeight="35.0" prefWidth="219.0" text="SELECIONE O PRODUTO">
          <font>
@@ -18,8 +17,9 @@
       </Label>
       <Separator layoutY="29.0" prefHeight="5.0" prefWidth="400.0" />
       <ListView layoutY="90.0" prefHeight="310.0" prefWidth="400.0" />
-      <Button fx:id="searchButton" layoutX="177.0" layoutY="62.0" mnemonicParsing="false" text="Pesquisar" />
+      <Button fx:id="searchButton" layoutX="14.0" layoutY="62.0" mnemonicParsing="false" onAction="#searchNonSpecItem" text="Pesquisar" />
       <TextField fx:id="itemDescription" layoutX="14.0" layoutY="36.0" prefHeight="26.0" prefWidth="153.0" promptText="Descrição..." />
-      <TextField fx:id="itemSku" layoutX="258.0" layoutY="36.0" prefHeight="26.0" prefWidth="128.0" promptText="SKU..." />
+      <TextField fx:id="itemSku" layoutX="214.0" layoutY="36.0" prefHeight="6.0" prefWidth="128.0" promptText="SKU..." />
+      <TextField fx:id="itemEquipament" layoutX="214.0" layoutY="62.0" prefHeight="14.0" prefWidth="128.0" promptText="Equipamento..." />
    </children>
 </AnchorPane>

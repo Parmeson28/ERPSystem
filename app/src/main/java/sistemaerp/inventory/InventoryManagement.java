@@ -3,6 +3,7 @@ package sistemaerp.inventory;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import sistemaerp.database.DatabaseHandler;
@@ -13,7 +14,7 @@ import sistemaerp.database.DatabaseHandler;
 public class InventoryManagement {
 
     
-    private ArrayList<String> products = new ArrayList<>();
+    private ArrayList<String[]> products = new ArrayList<>();
 
     BufferedReader reader;
     BufferedWriter writer;
@@ -50,18 +51,34 @@ public class InventoryManagement {
      //Searchs for an item that matches EXACTLY description AND sku
      //Need to change that to make search accept:
      //Only sku OR only name (opening a new window for selecting the correct item)
-     public String[] searchForItem(String description, String sku){
+     public String searchForItem(String description, String sku){
 
           products = db.showItems();
 
-          for(String a : products){
+          for(String[] a : products){
 
-               String[] b = a.split(" ");
+               if(a[0].equals(description) && a[1].equals(sku) && !a[0].equals("") && !a[1].equals("")){
 
-               if(b[0].equals(description) && b[1].equals(sku) && !b[0].equals("") && !b[1].equals("")){
-
-                    return b;
+                    return a[0] + " " + a[1] + " " + a[2];
                }
+          }
+
+          return null;
+     }
+
+
+     public String[] searchForNonSpecItem(String description, String sku, String equipament){
+          
+          products = db.showItems();
+
+          for(String[] a : products){
+
+               if((description == null || a[0].contains(description)) && (sku == null || a[1].contains(sku))){
+                    System.out.println(Arrays.toString(a));
+                    System.out.println(a[0]);
+               }
+
+
           }
 
           return null;
@@ -92,7 +109,13 @@ public class InventoryManagement {
 
           products = db.showItems();
 
-          return products;
+          ArrayList<String> p = new ArrayList<>();
+
+          for(String[] a : products){
+               p.add(a[0] + " " + a[1] + " " + a[2]);
+          }
+
+          return p;
      }
 
 }

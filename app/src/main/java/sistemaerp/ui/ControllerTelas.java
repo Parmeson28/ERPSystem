@@ -86,6 +86,7 @@ public class ControllerTelas {
             stage.show();
 
         }catch(IOException e){
+            System.out.println(e);
             System.out.println("Could not create new window!");
         }
         

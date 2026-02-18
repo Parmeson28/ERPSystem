@@ -47,24 +47,17 @@ public class ControllerMain {
    @FXML
    public void searchForItem(ActionEvent event){
 
-      productsView.getItems().clear();
-
-      String[] searchResult = management.searchForItem(descricao.getText(), codigo.getText());
+      String searchResult = management.searchForItem(descricao.getText(), codigo.getText());
 
       if(searchResult == null){
          mudarTela.openSearchWindow(event);
       }else{
+         productsView.getItems().clear();
          System.out.println("Pesquisa deu certo");
 
-         String item = Arrays.toString(searchResult);
+         System.out.println(searchResult);
 
-         item = item.replace(",", " ");
-         item = item.replace("[", "");
-         item = item.replace("]", "");
-
-         System.out.println(item);
-
-         productsView.getItems().addAll(item);
+         productsView.getItems().addAll(searchResult);
       }
 
    }

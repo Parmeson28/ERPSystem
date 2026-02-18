@@ -30,12 +30,15 @@ public class ControllerMovimentacao {
         String item = descricao.getText();
         String itemCodigo = codigo.getText();
 
-        String[] product = management.searchForItem(item, itemCodigo);
+        String product = management.searchForItem(item, itemCodigo);
 
-        estoqueAtual.setText(product[2]);
+        String[] aProduct = product.split(" ");
+
+        estoqueAtual.setText(aProduct[2]);
         estoqueAtual.setEditable(false);
     }
 
+    //PUT THE LOGIC INTO InventoryManagement
     @FXML
     public void alterQuantity(ActionEvent event){
 
