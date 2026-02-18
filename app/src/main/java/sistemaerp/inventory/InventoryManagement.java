@@ -49,8 +49,6 @@ public class InventoryManagement {
      }
 
      //Searchs for an item that matches EXACTLY description AND sku
-     //Need to change that to make search accept:
-     //Only sku OR only name (opening a new window for selecting the correct item)
      public String searchForItem(String description, String sku){
 
           products = db.showItems();
@@ -66,22 +64,25 @@ public class InventoryManagement {
           return null;
      }
 
-
-     public String[] searchForNonSpecItem(String description, String sku, String equipament){
+     //Searches on the searchWindow. 
+     //Can use parts of the description or parts of the SKU to find the item
+     public List<String[]> searchForNonSpecItem(String description, String sku, String equipament){
           
           products = db.showItems();
+          List<String[]> results = new ArrayList<>();
 
           for(String[] a : products){
 
                if((description == null || a[0].contains(description)) && (sku == null || a[1].contains(sku))){
                     System.out.println(Arrays.toString(a));
                     System.out.println(a[0]);
+                    
+                    results.add(a);
                }
-
 
           }
 
-          return null;
+          return results;
      }
           /*
           MAYBE USE LATER
