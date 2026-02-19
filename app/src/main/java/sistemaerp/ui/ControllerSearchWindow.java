@@ -3,6 +3,8 @@ package sistemaerp.ui;
 import java.util.Arrays;
 import java.util.List;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
@@ -15,6 +17,7 @@ public class ControllerSearchWindow {
     TextField itemDescription, itemSku;
     @FXML
     ListView<String> productView;
+    public String currentProduct;
 
     List<String[]> results;
 
@@ -22,7 +25,7 @@ public class ControllerSearchWindow {
     InventoryManagement management = new InventoryManagement();
 
     @FXML
-    public void searchNonSpecItem(ActionEvent event){
+    public String searchNonSpecItem(ActionEvent event){
 
         results = management.searchForNonSpecItem(itemDescription.getText(), itemSku.getText(), "nothing for now");
         
@@ -31,9 +34,23 @@ public class ControllerSearchWindow {
         for(String[] item : results){
             productView.getItems().add(Arrays.toString(item));
         }
-        
-        System.out.println(results.size());
 
+        productView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
+            @Override
+            public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2){
+
+                currentProduct = productView.getSelectionModel().getSelectedItem();
+                System.out.println(currentProduct);
+            }
+        });
+
+        return currentProduct;
+    }
+
+    @FXML
+    public void itemSelection(){
+        
+        
     }
 
 }

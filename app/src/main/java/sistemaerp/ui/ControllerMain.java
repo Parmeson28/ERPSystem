@@ -50,7 +50,9 @@ public class ControllerMain {
       String searchResult = management.searchForItem(descricao.getText(), codigo.getText());
 
       if(searchResult == null){
+
          mudarTela.openSearchWindow(event);
+      
       }else{
          productsView.getItems().clear();
          System.out.println("Pesquisa deu certo");

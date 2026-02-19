@@ -30,6 +30,8 @@ public class ControllerTelas {
 
 
         stage.setScene(scene); 
+        
+        stage.setMaximized(true);
         stage.show();
     }
 
@@ -42,6 +44,7 @@ public class ControllerTelas {
 
 
         stage.setScene(scene); 
+        stage.setMaximized(true);
         stage.show();
     }
 
@@ -55,6 +58,7 @@ public class ControllerTelas {
         scene = new Scene(root);
   
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.show();
      }
 
@@ -68,6 +72,7 @@ public class ControllerTelas {
 
   
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.show();
      }
 

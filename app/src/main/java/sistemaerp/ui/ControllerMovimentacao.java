@@ -25,6 +25,7 @@ public class ControllerMovimentacao {
     ValidationUtils validation = new ValidationUtils();
     
 
+    //Need to include the search window for an improved items search
     @FXML
     public void searchItem(ActionEvent event){
         String item = descricao.getText();
@@ -32,10 +33,18 @@ public class ControllerMovimentacao {
 
         String product = management.searchForItem(item, itemCodigo);
 
-        String[] aProduct = product.split(" ");
+        if(product == null){
+       
+            mudarTela.openSearchWindow(event);
+            
+        }else{
 
-        estoqueAtual.setText(aProduct[2]);
-        estoqueAtual.setEditable(false);
+            String[] aProduct = product.split(" ");
+
+            estoqueAtual.setText(aProduct[2]);
+            estoqueAtual.setEditable(false);
+       
+        }
     }
 
     //PUT THE LOGIC INTO InventoryManagement
