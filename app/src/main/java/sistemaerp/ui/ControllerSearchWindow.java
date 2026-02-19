@@ -14,7 +14,9 @@ public class ControllerSearchWindow {
     @FXML
     TextField itemDescription, itemSku;
     @FXML
-    ListView<String> productsView;
+    ListView<String> productView;
+
+    List<String[]> results;
 
 
     InventoryManagement management = new InventoryManagement();
@@ -22,13 +24,15 @@ public class ControllerSearchWindow {
     @FXML
     public void searchNonSpecItem(ActionEvent event){
 
-        productsView.getItems().clear();
-
-        List<String[]> results = management.searchForNonSpecItem(itemDescription.getText(), itemSku.getText(), "nothing for now");
+        results = management.searchForNonSpecItem(itemDescription.getText(), itemSku.getText(), "nothing for now");
+        
+        productView.getItems().clear();
 
         for(String[] item : results){
-            productsView.getItems().addAll(Arrays.toString(item));
+            productView.getItems().add(Arrays.toString(item));
         }
+        
+        System.out.println(results.size());
 
     }
 

@@ -112,6 +112,8 @@ public class DatabaseHandler {
     //Goes through all the data on the database to display all the products
     public ArrayList<String[]> showItems(){
 
+        ArrayList<String[]> products = new ArrayList<>();
+
         String sql = "SELECT * FROM produtos";
 
         try {

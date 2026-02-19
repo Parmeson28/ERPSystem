@@ -26,7 +26,7 @@ public class App extends Application{
 
             stage.setTitle("ERP System");
 
-
+            scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {

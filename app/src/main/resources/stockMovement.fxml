@@ -1,34 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemaerp.ui.ControllerMovimentacao">
-   <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c3c3c3" height="400.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c3c3c3" height="75.0" layoutX="200.0" stroke="BLACK" strokeType="INSIDE" width="401.0" />
-      <Line endX="-32.0" endY="262.0" layoutX="232.0" layoutY="138.0" startX="-32.0" startY="-138.0" strokeWidth="2.0" />
-      <Line endX="294.0" layoutX="307.0" layoutY="75.0" startX="-106.5" strokeWidth="2.0" />
-      <Button layoutX="14.0" layoutY="38.0" mnemonicParsing="false" onAction="#switchMain" prefHeight="38.0" prefWidth="169.0" text="Estoque" />
-      <Button layoutX="16.0" layoutY="91.0" mnemonicParsing="false" onAction="#switchVistas" prefHeight="38.0" prefWidth="169.0" text="Vistas Explodidas" />
-      <Button layoutX="14.0" layoutY="146.0" mnemonicParsing="false" onAction="#switchCadastro" prefHeight="38.0" prefWidth="169.0" text="Cadastrar Produtos" />
-      <TextField fx:id="descricao" layoutX="208.0" layoutY="38.0" prefHeight="25.0" prefWidth="200.0" promptText="Descrição..." />
-      <TextField fx:id="codigo" layoutX="418.0" layoutY="38.0" prefHeight="25.0" prefWidth="115.0" promptText="Código..." />
-      <Button fx:id="pesquisar" layoutX="545.0" layoutY="38.0" mnemonicParsing="false" onAction="#searchItem" prefHeight="25.0" prefWidth="26.0" text="Pesquisar" />
-      <Label layoutX="208.0" layoutY="14.0" prefHeight="20.0" prefWidth="192.0" text="Movimentação de Estoque">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <Button layoutX="16.0" layoutY="200.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="169.0" text="Movimentação de Estoque" />
-      <Label fx:id="itemName" layoutX="208.0" layoutY="82.0" prefHeight="26.0" prefWidth="170.0" text="Item..." />
-      <TextField fx:id="estoqueAtual" layoutX="208.0" layoutY="116.0" prefHeight="26.0" prefWidth="98.0" promptText="Estoque atual..." />
-      <TextField fx:id="novoEstoque" layoutX="208.0" layoutY="152.0" prefHeight="26.0" prefWidth="98.0" promptText="Novo estoque..." />
-      <Button fx:id="alterar" layoutX="208.0" layoutY="193.0" mnemonicParsing="false" onAction="#alterQuantity" prefHeight="38.0" prefWidth="98.0" text="Alterar" />
-   </children>
-</AnchorPane>
+<BorderPane prefWidth="1920.0" prefHeight="1080.0"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sistemaerp.ui.ControllerMovimentacao"
+            style="-fx-background-color: #f4f6f9;">
+
+    <!-- LEFT SIDEBAR -->
+    <left>
+        <VBox spacing="20"
+              prefWidth="260"
+              style="-fx-background-color: #1e272e; -fx-padding: 30;">
+
+            <Label text="ERP SYSTEM"
+                   style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" />
+
+            <Button text="Estoque"
+                    onAction="#switchMain"
+                    maxWidth="Infinity"
+                    prefHeight="50"
+                    styleClass="sidebar-button"/>
+
+            <Button text="Vistas Explodidas"
+                    onAction="#switchVistas"
+                    maxWidth="Infinity"
+                    prefHeight="50"
+                    styleClass="sidebar-button"/>
+
+            <Button text="Cadastrar Produtos"
+                    onAction="#switchCadastro"
+                    maxWidth="Infinity"
+                    prefHeight="50"
+                    styleClass="sidebar-button"/>
+
+            <Button text="Movimentação de Estoque"
+                    maxWidth="Infinity"
+                    prefHeight="50"
+                    styleClass="sidebar-button"/>
+
+        </VBox>
+    </left>
+
+    <!-- TOP BAR -->
+    <top>
+    <HBox spacing="30"
+          alignment="CENTER_LEFT"
+          style="-fx-padding: 25; -fx-background-color: white;">
+
+        <Label text="Movimentação de Estoque">
+            <font>
+                <Font name="System Bold" size="26"/>
+            </font>
+        </Label>
+
+        <!-- Search Section -->
+        <HBox spacing="15" alignment="CENTER_LEFT">
+
+            <TextField fx:id="descricao"
+                       promptText="Descrição..."
+                       prefWidth="250"/>
+
+            <TextField fx:id="codigo"
+                       promptText="Código..."
+                       prefWidth="160"/>
+
+            <Button fx:id="pesquisar"
+                    text="Pesquisar"
+                    onAction="#searchItem"
+                    prefHeight="40"
+                    prefWidth="120"
+                    style="-fx-background-color: #0984e3; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+        </HBox>
+
+    </HBox>
+</top>
+
+    <!-- CENTER CONTENT -->
+    <center>
+        <VBox spacing="25"
+              style="-fx-padding: 40;">
+
+            <Label fx:id="itemName"
+                   text="Item..."
+                   style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+            <GridPane hgap="20" vgap="20">
+
+                <Label text="Estoque Atual:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="estoqueAtual"
+                           promptText="Estoque atual..."
+                           GridPane.rowIndex="0" GridPane.columnIndex="1"
+                           prefWidth="200"/>
+
+                <Label text="Novo Estoque:"
+                       GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="novoEstoque"
+                           promptText="Novo estoque..."
+                           GridPane.rowIndex="1" GridPane.columnIndex="1"
+                           prefWidth="200"/>
+
+                <Button fx:id="alterar"
+                        text="Alterar"
+                        onAction="#alterQuantity"
+                        GridPane.rowIndex="2"
+                        GridPane.columnIndex="1"
+                        prefHeight="45"
+                        prefWidth="200"
+                        style="-fx-background-color: #00b894; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+            </GridPane>
+
+        </VBox>
+    </center>
+
+</BorderPane>

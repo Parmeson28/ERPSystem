@@ -1,0 +1,15 @@
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10 15 10 15;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #485460;
+}
+
+.sidebar-button:pressed {
+    -fx-background-color: #3d3d3d;
+}

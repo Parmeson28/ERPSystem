@@ -20,6 +20,8 @@ public class InventoryManagement {
     BufferedWriter writer;
     String line;
 
+    public List<String[]> results = new ArrayList<>();
+
     DatabaseHandler db = new DatabaseHandler();
 
     //Verifies if the connection with the databse is happening with no issues
@@ -66,14 +68,17 @@ public class InventoryManagement {
 
      //Searches on the searchWindow. 
      //Can use parts of the description or parts of the SKU to find the item
+     //Implement later -> Search based on the equipment name
      public List<String[]> searchForNonSpecItem(String description, String sku, String equipament){
-          
+
+          System.out.println(results.size());
           products = db.showItems();
-          List<String[]> results = new ArrayList<>();
+
+          results.clear();
 
           for(String[] a : products){
 
-               if((description == null || a[0].contains(description)) && (sku == null || a[1].contains(sku))){
+               if((description.isBlank() || a[0].contains(description)) && (sku.isBlank() || a[1].contains(sku))){
                     System.out.println(Arrays.toString(a));
                     System.out.println(a[0]);
                     
@@ -83,6 +88,7 @@ public class InventoryManagement {
           }
 
           return results;
+
      }
           /*
           MAYBE USE LATER
@@ -120,5 +126,3 @@ public class InventoryManagement {
      }
 
 }
-
-
