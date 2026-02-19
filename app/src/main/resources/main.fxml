@@ -47,9 +47,9 @@
 
     <!-- TOP SEARCH BAR -->
     <top>
-        <HBox spacing="15"
-              alignment="CENTER_LEFT"
-              style="-fx-padding: 25; -fx-background-color: white;">
+        <HBox spacing="40"
+            alignment="CENTER_LEFT"
+            style="-fx-padding: 25; -fx-background-color: white;">
 
             <Label text="ESTOQUE">
                 <font>
@@ -57,22 +57,25 @@
                 </font>
             </Label>
 
-            <Region HBox.hgrow="ALWAYS"/>
+            <!-- Search Group -->
+            <HBox spacing="15" alignment="CENTER_LEFT">
 
-            <TextField fx:id="descricao"
-                       promptText="Descrição..."
-                       prefWidth="300"/>
+                <TextField fx:id="descricao"
+                        promptText="Descrição..."
+                        prefWidth="250"/>
 
-            <TextField fx:id="codigo"
-                       promptText="Código..."
-                       prefWidth="200"/>
+                <TextField fx:id="codigo"
+                        promptText="Código..."
+                        prefWidth="160"/>
 
-            <Button fx:id="pesquisar"
-                    text="Pesquisar"
-                    onAction="#searchForItem"
-                    prefHeight="40"
-                    prefWidth="130"
-                    style="-fx-background-color: #0984e3; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                <Button fx:id="pesquisar"
+                        text="Pesquisar"
+                        onAction="#searchForItem"
+                        prefHeight="40"
+                        prefWidth="120"
+                        style="-fx-background-color: #0984e3; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+            </HBox>
 
         </HBox>
     </top>
