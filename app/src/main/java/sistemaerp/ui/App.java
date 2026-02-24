@@ -9,8 +9,14 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import sistemaerp.inventory.InventoryManagement;
+import sistemaerp.util.AppState;
 
 public class App extends Application{
+
+    ControllerMain main;
+    
+    AppState state = new AppState();
+
     @Override
     public void start(Stage stage) {
 
@@ -20,9 +26,13 @@ public class App extends Application{
 
         Parent root;
         try {
-            root = FXMLLoader.load(getClass().getResource("/main.fxml"));
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main.fxml"));
+            root = loader.load();
             Scene scene = new Scene(root, 600, 600, Color.SKYBLUE);
+
+
+            ControllerMain controller = loader.getController();
+            controller.setAppState(state);
 
             stage.setTitle("ERP System");
 

@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import sistemaerp.inventory.InventoryManagement;
-
+import sistemaerp.util.AppState;
 import sistemaerp.util.ValidationUtils;
 
 public class ControllerMovimentacao {
@@ -20,14 +20,17 @@ public class ControllerMovimentacao {
     @FXML
     Button pesquisar, alterar;
 
+    String[] produto;
+
     ControllerTelas mudarTela = new ControllerTelas();
+    ControllerOpenWindow openWindow = new ControllerOpenWindow();
     InventoryManagement management = new InventoryManagement();
     ValidationUtils validation = new ValidationUtils();
-    
+    AppState state;
 
     //Need to include the search window for an improved items search
     @FXML
-    public void searchItem(ActionEvent event){
+    public void searchItem(){
         String item = descricao.getText();
         String itemCodigo = codigo.getText();
 
@@ -35,13 +38,11 @@ public class ControllerMovimentacao {
 
         if(product == null){
        
-            mudarTela.openSearchWindow(event);
+            openWindow.openSearchWindow(state);
             
         }else{
 
-            String[] aProduct = product.split(" ");
-
-            estoqueAtual.setText(aProduct[2]);
+            estoqueAtual.setText(produto[2]);
             estoqueAtual.setEditable(false);
        
         }
@@ -75,6 +76,31 @@ public class ControllerMovimentacao {
         }
 
     }
+
+
+    public void setAppState(AppState appState) {
+      this.state = appState;
+
+      state.selectedProductProperty().addListener(
+         (obs, oldVal, newVal) -> {
+               if (newVal != null) {
+                  System.out.println("Updated in Main: " + newVal);
+
+                  String item = state.getSelectedProduct();
+                  if(item != null){
+                     produto = item.split(",");
+                     produto[0] = produto[0].replace("[", "");
+                     produto[1] = produto[1].replace(" ", "");
+                     produto[2] = produto[2].replace("]", "");
+
+                     descricao.setText(produto[0]);
+                     codigo.setText(produto[1]);
+                  }
+               }
+         }
+      );
+         
+   }
 
 
     public void switchMain(ActionEvent event) throws IOException{

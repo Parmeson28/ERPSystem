@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import sistemaerp.inventory.InventoryManagement;
+import sistemaerp.util.AppState;
 
 public class ControllerSearchWindow {
     
@@ -23,34 +24,52 @@ public class ControllerSearchWindow {
 
 
     InventoryManagement management = new InventoryManagement();
+    ControllerOpenWindow openWindow = new ControllerOpenWindow();
+    private AppState state;
 
     @FXML
-    public String searchNonSpecItem(ActionEvent event){
-
-        results = management.searchForNonSpecItem(itemDescription.getText(), itemSku.getText(), "nothing for now");
-        
-        productView.getItems().clear();
-
-        for(String[] item : results){
-            productView.getItems().add(Arrays.toString(item));
-        }
+    public void initialize(){
 
         productView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
             @Override
-            public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2){
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
 
-                currentProduct = productView.getSelectionModel().getSelectedItem();
-                System.out.println(currentProduct);
+                
+            
+                state.setSelectedProduct(newValue);
+
+                if(currentProduct != null){
+
+                    System.out.println("Precisa fechar essa janela");
+                    
+                }
+                
             }
         });
 
-        return currentProduct;
     }
 
     @FXML
-    public void itemSelection(){
+    public void searchNonSpecItem(ActionEvent event){
+
+        String description = itemDescription.getText();
+        String sku = itemSku.getText();
+
+        if(description != null && sku != null){
+            results = management.searchForNonSpecItem(description, sku, "nothing for now");
+        }
+
+        productView.getItems().clear();
+
+        for(String[] item : results){
+
+            productView.getItems().add(Arrays.toString(item));
         
+        }
         
     }
 
+    public void setAppState(AppState state) {
+        this.state = state;
+    }
 }

@@ -2,7 +2,6 @@ package sistemaerp.ui;
 
 
 import java.io.IOException;
-import java.util.Arrays;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -11,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import sistemaerp.inventory.InventoryManagement;
+import sistemaerp.util.AppState;
 
 public class ControllerMain {
 
@@ -21,10 +21,10 @@ public class ControllerMain {
     private TextField descricao, codigo;
     private String currentProduct;
     
-
    ControllerTelas mudarTela = new ControllerTelas();
+   ControllerOpenWindow openWindow = new ControllerOpenWindow();
    InventoryManagement management = new InventoryManagement();
-
+   private AppState state;
   
    @FXML
    public void initialize(){
@@ -51,7 +51,7 @@ public class ControllerMain {
 
       if(searchResult == null){
 
-         mudarTela.openSearchWindow(event);
+         openWindow.openSearchWindow(state);
       
       }else{
          productsView.getItems().clear();
@@ -64,6 +64,29 @@ public class ControllerMain {
 
    }
 
+   public void setAppState(AppState appState) {
+      this.state = appState;
+
+      state.selectedProductProperty().addListener(
+         (obs, oldVal, newVal) -> {
+               if (newVal != null) {
+                  System.out.println("Updated in Main: " + newVal);
+
+                  String item = state.getSelectedProduct();
+                  if(item != null){
+                     String[] produto = item.split(",");
+                     produto[0] = produto[0].replace("[", "");
+                     produto[1] = produto[1].replace(" ", "");
+                     produto[2] = produto[2].replace("]", "");
+
+                     descricao.setText(produto[0]);
+                     codigo.setText(produto[1]);
+                  }
+               }
+         }
+      );
+         
+   }
 
    public void switchCadastro(ActionEvent event) throws IOException{
       mudarTela.switchCadastro(event);
