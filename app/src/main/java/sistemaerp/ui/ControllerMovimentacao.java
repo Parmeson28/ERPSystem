@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import sistemaerp.inventory.InventoryManagement;
+import sistemaerp.model.Product;
 import sistemaerp.util.AppState;
 import sistemaerp.util.ValidationUtils;
 
@@ -20,7 +21,7 @@ public class ControllerMovimentacao {
     @FXML
     Button pesquisar, alterar;
 
-    String[] produto;
+    Product produto;
 
     ControllerTelas mudarTela = new ControllerTelas();
     ControllerOpenWindow openWindow = new ControllerOpenWindow();
@@ -34,7 +35,7 @@ public class ControllerMovimentacao {
         String item = descricao.getText();
         String itemCodigo = codigo.getText();
 
-        String product = management.searchForItem(item, itemCodigo);
+        Product product = management.searchForItem(item, itemCodigo);
 
         if(product == null){
        
@@ -42,9 +43,9 @@ public class ControllerMovimentacao {
             
         }else{
 
-            estoqueAtual.setText(produto[2]);
+            estoqueAtual.setText(String.valueOf(product.getQuantity()));
             estoqueAtual.setEditable(false);
-       
+
         }
     }
 
@@ -81,25 +82,17 @@ public class ControllerMovimentacao {
     public void setAppState(AppState appState) {
       this.state = appState;
 
-      state.selectedProductProperty().addListener(
+       state.selectedProductProperty().addListener(
          (obs, oldVal, newVal) -> {
                if (newVal != null) {
-                  System.out.println("Updated in Main: " + newVal);
 
-                  String item = state.getSelectedProduct();
-                  if(item != null){
-                     produto = item.split(",");
-                     produto[0] = produto[0].replace("[", "");
-                     produto[1] = produto[1].replace(" ", "");
-                     produto[2] = produto[2].replace("]", "");
+                  Product item = state.getSelectedProduct();
 
-                     descricao.setText(produto[0]);
-                     codigo.setText(produto[1]);
-                  }
+                  descricao.setText(item.getDescription());
+                  codigo.setText(item.getSku());
                }
          }
       );
-         
    }
 
 

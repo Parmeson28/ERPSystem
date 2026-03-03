@@ -17,6 +17,11 @@ public class Product {
 
     }
 
+    @Override
+    public String toString(){
+        return description + " - " + sku + " - " + quantity + " - " + equipment;
+    }
+
     //Getters
     public String getDescription() {
         return description;

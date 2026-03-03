@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import io.github.cdimascio.dotenv.Dotenv;
+import sistemaerp.model.Product;
 
 
 //This class handles the database communication
@@ -110,9 +111,9 @@ public class DatabaseHandler {
     }
 
     //Goes through all the data on the database to display all the products
-    public ArrayList<String[]> showItems(){
+    public ArrayList<Product> showItems(){
 
-        ArrayList<String[]> products = new ArrayList<>();
+        ArrayList<Product> products = new ArrayList<>();
 
         String sql = "SELECT * FROM produtos";
 
@@ -125,7 +126,7 @@ public class DatabaseHandler {
 
             while(rs.next()){
 
-                String[] a = {rs.getString("description"), rs.getString("sku"), rs.getString("qtd")};
+                Product a = new Product(rs.getString("description"), rs.getString("sku"), rs.getInt("qtd"), rs.getString("maquina"));
 
                 products.add(a);
             
@@ -138,7 +139,7 @@ public class DatabaseHandler {
         } catch (SQLException e) {
             System.out.println("Erro na conexão! Não foi possível mostrar os items.");
             e.printStackTrace();
-            return new ArrayList<String[]>();
+            return new ArrayList<Product>();
         }
 
     }

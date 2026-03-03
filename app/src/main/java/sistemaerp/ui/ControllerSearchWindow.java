@@ -1,15 +1,12 @@
 package sistemaerp.ui;
 
-import java.util.Arrays;
 import java.util.List;
-
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import sistemaerp.inventory.InventoryManagement;
+import sistemaerp.model.Product;
 import sistemaerp.util.AppState;
 
 public class ControllerSearchWindow {
@@ -17,10 +14,10 @@ public class ControllerSearchWindow {
     @FXML
     TextField itemDescription, itemSku;
     @FXML
-    ListView<String> productView;
-    public String currentProduct;
+    ListView<Product> productView;
+    public Product currentProduct;
 
-    List<String[]> results;
+    List<Product> results;
 
 
     InventoryManagement management = new InventoryManagement();
@@ -30,22 +27,17 @@ public class ControllerSearchWindow {
     @FXML
     public void initialize(){
 
-        productView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
+        productView.getSelectionModel().selectedItemProperty().addListener(
+         (obs, oldValue, newValue) -> {
 
-                
-            
-                state.setSelectedProduct(newValue);
+                currentProduct = newValue;
 
-                if(currentProduct != null){
-
-                    System.out.println("Precisa fechar essa janela");
-                    
+                if (currentProduct != null) {
+                    System.out.println(currentProduct.getDescription());
+                    state.setSelectedProduct(currentProduct);
                 }
-                
             }
-        });
+        );
 
     }
 
@@ -56,16 +48,15 @@ public class ControllerSearchWindow {
         String sku = itemSku.getText();
 
         if(description != null && sku != null){
-            results = management.searchForNonSpecItem(description, sku, "nothing for now");
-        }
 
+            results = management.searchForNonSpecItem(description, sku, "nothing for now");
+            System.out.println(results);
+
+        }
+        
         productView.getItems().clear();
 
-        for(String[] item : results){
-
-            productView.getItems().add(Arrays.toString(item));
-        
-        }
+        productView.getItems().addAll(results);
         
     }
 

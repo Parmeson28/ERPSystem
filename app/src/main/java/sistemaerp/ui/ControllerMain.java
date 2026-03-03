@@ -2,24 +2,22 @@ package sistemaerp.ui;
 
 
 import java.io.IOException;
-
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import sistemaerp.inventory.InventoryManagement;
+import sistemaerp.model.Product;
 import sistemaerp.util.AppState;
 
 public class ControllerMain {
 
 
     @FXML
-    private ListView<String> productsView;
+    private ListView<Product> productsView;
     @FXML
     private TextField descricao, codigo;
-    private String currentProduct;
+    private Product currentProduct;
     
    ControllerTelas mudarTela = new ControllerTelas();
    ControllerOpenWindow openWindow = new ControllerOpenWindow();
@@ -31,23 +29,23 @@ public class ControllerMain {
 
       productsView.getItems().addAll(management.showItem());
 
-      productsView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
+      productsView.getSelectionModel().selectedItemProperty().addListener(
+         (obs, oldValue, newValue) -> {
 
-         @Override
-         public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2){
+            currentProduct = newValue;
 
-            currentProduct = productsView.getSelectionModel().getSelectedItem();
-            System.out.println(currentProduct);
-
+            if (currentProduct != null) {
+               System.out.println(currentProduct.getDescription());
+            }
          }
-      });
+      );
 
    }
 
    @FXML
    public void searchForItem(ActionEvent event){
 
-      String searchResult = management.searchForItem(descricao.getText(), codigo.getText());
+      Product searchResult = management.searchForItem(descricao.getText(), codigo.getText());
 
       if(searchResult == null){
 
@@ -69,19 +67,13 @@ public class ControllerMain {
 
       state.selectedProductProperty().addListener(
          (obs, oldVal, newVal) -> {
-               if (newVal != null) {
+               if (newVal != null) { 
                   System.out.println("Updated in Main: " + newVal);
 
-                  String item = state.getSelectedProduct();
-                  if(item != null){
-                     String[] produto = item.split(",");
-                     produto[0] = produto[0].replace("[", "");
-                     produto[1] = produto[1].replace(" ", "");
-                     produto[2] = produto[2].replace("]", "");
+                  Product item = state.getSelectedProduct();
 
-                     descricao.setText(produto[0]);
-                     codigo.setText(produto[1]);
-                  }
+                  descricao.setText(item.getDescription());
+                  codigo.setText(item.getSku());
                }
          }
       );

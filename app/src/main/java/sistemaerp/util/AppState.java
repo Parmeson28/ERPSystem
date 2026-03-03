@@ -1,22 +1,24 @@
 package sistemaerp.util;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import sistemaerp.model.Product;
 
 public class AppState {
-    
-    private final StringProperty selectedProduct = new SimpleStringProperty();
 
-    public StringProperty selectedProductProperty() {
+   private final ObjectProperty<Product> selectedProduct =
+        new SimpleObjectProperty<>();
+
+    public ObjectProperty<Product> selectedProductProperty() {
         return selectedProduct;
     }
 
-    public String getSelectedProduct() {
+    public Product getSelectedProduct() {
         return selectedProduct.get();
     }
 
-    public void setSelectedProduct(String value) {
-        selectedProduct.set(value);
+    public void setSelectedProduct(Product product) {
+        selectedProduct.set(product);
     }
 
 }
