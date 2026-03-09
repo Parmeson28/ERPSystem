@@ -1,6 +1,5 @@
 package sistemaerp.ui;
 
-
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,6 +8,7 @@ import javafx.scene.control.TextField;
 import sistemaerp.inventory.InventoryManagement;
 import sistemaerp.model.Product;
 import sistemaerp.util.AppState;
+import sistemaerp.util.SpreadsheetImporter;
 
 public class ControllerMain {
 
@@ -22,10 +22,14 @@ public class ControllerMain {
    ControllerTelas mudarTela = new ControllerTelas();
    ControllerOpenWindow openWindow = new ControllerOpenWindow();
    InventoryManagement management = new InventoryManagement();
+   SpreadsheetImporter importer = new SpreadsheetImporter("C:\\Users\\tiago\\Downloads\\ProdutosAlpha.xls");
    private AppState state;
   
    @FXML
    public void initialize(){
+
+      importer.readFile();
+
 
       productsView.getItems().addAll(management.showItem());
 

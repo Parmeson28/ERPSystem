@@ -36,18 +36,29 @@ public class InventoryManagement {
 
     //Register the items on the database if all the fields are correctly filled
     // <------------ ******** MUST DO: Not allow parts to be registered under the same SKU ******** ------------>
-     public void registerItems(String description, String id, int quantity, String machinery){
-     
+     public void registerItems(String description, String sku, int quantity, String machinery){
 
-          if(!description.strip().equals("") || !id.strip().equals("") || !machinery.strip().equals("")){
+          boolean registered = false;
 
-               db.registerProducts(description, id, quantity, machinery);
-               System.out.println("Item foi enviado para cadastro");
+          for(Product a : showItem()){
+               if(sku.equals(a.getSku())){
+                    System.out.println("Código já registrado em outro item");
+                    registered = true;
+                    break;
+               }
 
-          }else{
-               System.out.println("Campos incompletos");
           }
 
+          if(registered == false){
+               if(!description.strip().equals("") || !sku.strip().equals("") || !machinery.strip().equals("")){
+
+                    db.registerProducts(description, sku, quantity, machinery);
+                    System.out.println("Item foi enviado para cadastro");
+
+               }else{
+                    System.out.println("Campos incompletos");
+               }
+          }
      }
 
      //Searchs for an item that matches EXACTLY description AND sku
