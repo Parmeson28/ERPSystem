@@ -19,7 +19,6 @@ public class ControllerSearchWindow {
 
     List<Product> results;
 
-
     InventoryManagement management = new InventoryManagement();
     ControllerOpenWindow openWindow = new ControllerOpenWindow();
     private AppState state;
@@ -38,7 +37,6 @@ public class ControllerSearchWindow {
                 }
             }
         );
-
     }
 
     @FXML

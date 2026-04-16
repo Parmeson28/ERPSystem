@@ -51,7 +51,7 @@ public class InventoryManagement {
 
           if(registered == false){
                if(!description.strip().equals("") || !sku.strip().equals("") || !machinery.strip().equals("")){
-
+                    
                     db.registerProducts(description, sku, quantity, machinery);
                     System.out.println("Item foi enviado para cadastro");
 

@@ -21,13 +21,13 @@ public class ControllerCadastro {
          String itemId = codigo.getText();
          String machinery = equipamento.getText();
 
-
          management.registerItems(description, itemId, 0, machinery);
 
          descricao.setText("");
          codigo.setText("");
          equipamento.setText("");
    }
+
 
    public void switchMain(ActionEvent event) throws IOException{
       mudarTela.switchMain(event);
