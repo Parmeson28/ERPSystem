@@ -13,15 +13,14 @@ public class ControllerCadastro {
    private TextField descricao, codigo, equipamento;
 
    InventoryManagement management = new InventoryManagement();
-
    ControllerTelas mudarTela = new ControllerTelas();
 
    public void takeText(ActionEvent e){
          String description = descricao.getText(); 
          String itemId = codigo.getText();
-         String machinery = equipamento.getText();
+         String equipment = equipamento.getText();
 
-         management.registerItems(description, itemId, 0, machinery);
+         management.registerItems(description, itemId, 0, equipment);
 
          descricao.setText("");
          codigo.setText("");
@@ -29,6 +28,7 @@ public class ControllerCadastro {
    }
 
 
+   // ------- Switch screen -------
    public void switchMain(ActionEvent event) throws IOException{
       mudarTela.switchMain(event);
    }

@@ -68,8 +68,7 @@ public class ControllerMovimentacao {
                 management.changeItemQuantity(item, itemCodigo, n);
 
                 estoqueAtual.setText(estoqueN);
-                
-                novoEstoque.setText("");
+                novoEstoque.clear();
             }
 
         }else{
@@ -80,10 +79,10 @@ public class ControllerMovimentacao {
 
 
     public void setAppState(AppState appState) {
-      this.state = appState;
+        this.state = appState;
 
-       state.selectedProductProperty().addListener(
-         (obs, oldVal, newVal) -> {
+        state.selectedProductProperty().addListener(
+            (obs, oldVal, newVal) -> {
                if (newVal != null) {
 
                   Product item = state.getSelectedProduct();
@@ -91,11 +90,11 @@ public class ControllerMovimentacao {
                   descricao.setText(item.getDescription());
                   codigo.setText(item.getSku());
                }
-         }
-      );
-   }
+            }
+        );
+    }
 
-
+    // ------- Switch screen -------
     public void switchMain(ActionEvent event) throws IOException{
         mudarTela.switchMain(event);
     }

@@ -9,6 +9,7 @@ public class ControllerVistaExplodida {
 
     ControllerTelas mudarTela = new ControllerTelas();
 
+    //Switch screen
     public void switchMain(ActionEvent event) throws IOException{
         mudarTela.switchMain(event);
      }

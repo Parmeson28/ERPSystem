@@ -6,8 +6,7 @@ import sistemaerp.model.Product;
 
 public class AppState {
 
-   private final ObjectProperty<Product> selectedProduct =
-        new SimpleObjectProperty<>();
+    private final ObjectProperty<Product> selectedProduct = new SimpleObjectProperty<>();
 
     public ObjectProperty<Product> selectedProductProperty() {
         return selectedProduct;

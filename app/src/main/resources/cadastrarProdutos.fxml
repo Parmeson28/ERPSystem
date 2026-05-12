@@ -1,59 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefWidth="1920.0" prefHeight="1080.0"
-            xmlns="http://javafx.com/javafx/25"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="sistemaerp.ui.ControllerCadastro"
-            style="-fx-background-color: #f4f6f9;">
+<BorderPane prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #f4f6f9;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemaerp.ui.ControllerCadastro">
 
     <!-- LEFT SIDEBAR -->
     <left>
-        <VBox spacing="20"
-              prefWidth="260"
-              style="-fx-background-color: #1e272e; -fx-padding: 30;">
+        <VBox prefWidth="260" spacing="20" style="-fx-background-color: #1e272e; -fx-padding: 30;">
 
-            <Label text="ERP SYSTEM"
-                   style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" />
+            <Label style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" text="ERP SYSTEM" />
 
-            <Button text="Estoque"
-                    onAction="#switchMain"
-                    maxWidth="Infinity"
-                    prefHeight="50"
-                    styleClass="sidebar-button"/>
+            <Button maxWidth="Infinity" onAction="#switchMain" prefHeight="50" styleClass="sidebar-button" text="Estoque" />
 
-            <Button text="Vistas Explodidas"
-                    onAction="#switchVistas"
-                    maxWidth="Infinity"
-                    prefHeight="50"
-                    styleClass="sidebar-button"/>
+            <Button maxWidth="Infinity" onAction="#switchVistas" prefHeight="50" styleClass="sidebar-button" text="Vistas Explodidas" />
 
-            <Button text="Cadastrar Produtos"
-                    maxWidth="Infinity"
-                    prefHeight="50"
-                    styleClass="sidebar-button"/>
+            <Button maxWidth="Infinity" prefHeight="50" styleClass="sidebar-button" text="Cadastrar Produtos" />
 
-            <Button text="Movimentação de Estoque"
-                    onAction="#switchMovimentacao"
-                    maxWidth="Infinity"
-                    prefHeight="50"
-                    styleClass="sidebar-button"/>
+            <Button maxWidth="Infinity" onAction="#switchMovimentacao" prefHeight="50" styleClass="sidebar-button" text="Movimentação de Estoque" />
 
         </VBox>
     </left>
 
     <!-- TOP HEADER -->
     <top>
-        <HBox spacing="30"
-              alignment="CENTER_LEFT"
-              style="-fx-padding: 25; -fx-background-color: white;">
+        <HBox alignment="CENTER_LEFT" spacing="30" style="-fx-padding: 25; -fx-background-color: white;">
 
             <Label text="Cadastrar Produtos">
                 <font>
-                    <Font name="System Bold" size="28"/>
+                    <Font name="System Bold" size="28" />
                 </font>
             </Label>
 
@@ -62,46 +46,37 @@
 
     <!-- CENTER FORM -->
     <center>
-        <VBox alignment="TOP_LEFT"
-              spacing="30"
-              style="-fx-padding: 50;">
+        <VBox alignment="TOP_LEFT" spacing="30" style="-fx-padding: 50;">
 
             <GridPane hgap="25" vgap="20">
 
-                <Label text="Descrição:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                <TextField fx:id="descricao"
-                           promptText="Descrição..."
-                           prefWidth="300"
-                           GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label text="Descrição:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <TextField fx:id="descricao" prefWidth="300" promptText="Descrição..." GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-                <Label text="Código:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                <TextField fx:id="codigo"
-                           promptText="Código..."
-                           prefWidth="200"
-                           GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label text="Código:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <TextField fx:id="codigo" prefWidth="200" promptText="Código..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-                <Label text="Equipamento:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-                <TextField fx:id="equipamento"
-                           promptText="Equipamento..."
-                           prefWidth="250"
-                           GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label text="Equipamento:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <TextField fx:id="equipamento" prefWidth="250" promptText="Equipamento..." GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-                <Label text="Categoria:"
-                       GridPane.rowIndex="3"
-                       GridPane.columnIndex="0"/>
+                <Label text="Categoria:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
 
-                <ChoiceBox GridPane.rowIndex="3"
-                           GridPane.columnIndex="1"
-                           prefWidth="200"/>
+                <ChoiceBox prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <columnConstraints>
+               <ColumnConstraints />
+               <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
 
             </GridPane>
 
-            <Button fx:id="pesquisar"
-                    text="Cadastrar"
-                    onAction="#takeText"
-                    prefHeight="50"
-                    prefWidth="220"
-                    style="-fx-background-color: #00b894; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;"/>
+            <Button fx:id="pesquisar" onAction="#takeText" prefHeight="50" prefWidth="220" style="-fx-background-color: #00b894; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;" text="Cadastrar" />
+         <Button fx:id="Import" mnemonicParsing="false" text="Import XML" />
 
         </VBox>
     </center>

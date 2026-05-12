@@ -10,32 +10,27 @@ import sistemaerp.model.Product;
 
 
 //This class handles the inventory logic of the program
-//Logic related to parts go here
 public class InventoryManagement {
 
-    
-    private ArrayList<Product> products = new ArrayList<>();
+     BufferedReader reader;
+     BufferedWriter writer;
+     String line;
 
-    BufferedReader reader;
-    BufferedWriter writer;
-    String line;
 
-    public List<Product> results = new ArrayList<>();
+     DatabaseHandler db = new DatabaseHandler();
 
-    DatabaseHandler db = new DatabaseHandler();
+     //Verifies if the connection with the databse is happening with no issues
+     public boolean verifyFile(){
 
-    //Verifies if the connection with the databse is happening with no issues
-    public boolean verifyFile(){
+          db.dbConnection();
 
-        db.dbConnection();
+          System.out.println("All worked fine");
+          return true;
 
-        System.out.println("All worked fine");
-        return true;
+     }
 
-    }
-
-    //Register the items on the database if all the fields are correctly filled
-    // <------------ ******** MUST DO: Not allow parts to be registered under the same SKU ******** ------------>
+     //Register the items on the database if all the fields are correctly filled
+     // <------------ ******** MUST DO: Not allow parts to be registered under the same SKU ******** ------------>
      public void registerItems(String description, String sku, int quantity, String machinery){
 
           boolean registered = false;
@@ -64,7 +59,7 @@ public class InventoryManagement {
      //Searchs for an item that matches EXACTLY description AND sku
      public Product searchForItem(String description, String sku){
 
-          products = db.showItems();
+          ArrayList<Product> products = db.showItems();
 
           for(Product a : products){
 
@@ -82,9 +77,11 @@ public class InventoryManagement {
      //Implement later -> Search based on the equipment name
      public List<Product> searchForNonSpecItem(String description, String sku, String equipament){
 
+          List<Product> results = new ArrayList<>();
+
           System.out.println(results.size());
 
-          products = db.showItems();
+          ArrayList<Product> products = db.showItems();
 
           results.clear();
 
@@ -127,7 +124,7 @@ public class InventoryManagement {
      //Used when it is needed to display every item registered
      public ArrayList<Product> showItem(){
 
-          products = db.showItems();
+          ArrayList<Product> products = db.showItems();
 
           ArrayList<Product> p = new ArrayList<>();
 

@@ -26,7 +26,6 @@ public class ControllerOpenWindow{
             stage = new Stage();
             stage.setTitle("Busca de itens");
 
-
             stage.setScene(scene);
             
             stage.show();

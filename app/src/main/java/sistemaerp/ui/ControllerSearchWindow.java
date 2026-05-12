@@ -10,7 +10,7 @@ import sistemaerp.model.Product;
 import sistemaerp.util.AppState;
 
 public class ControllerSearchWindow {
-    
+
     @FXML
     TextField itemDescription, itemSku;
     @FXML

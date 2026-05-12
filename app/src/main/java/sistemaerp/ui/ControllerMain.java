@@ -22,13 +22,13 @@ public class ControllerMain {
    ControllerTelas mudarTela = new ControllerTelas();
    ControllerOpenWindow openWindow = new ControllerOpenWindow();
    InventoryManagement management = new InventoryManagement();
-   SpreadsheetImporter importer = new SpreadsheetImporter("C:\\Users\\tiago\\Downloads\\ProdutosAlpha.xls");
+   //SpreadsheetImporter importer = new SpreadsheetImporter("C:\\Users\\tiago\\Downloads\\ProdutosAlpha.xls");
    private AppState state;
   
    @FXML
    public void initialize(){
 
-      importer.readFile();
+      //importer.readFile();
 
 
       productsView.getItems().addAll(management.showItem());
@@ -84,6 +84,7 @@ public class ControllerMain {
          
    }
 
+   // ------- Switch screen -------
    public void switchCadastro(ActionEvent event) throws IOException{
       mudarTela.switchCadastro(event);
    }

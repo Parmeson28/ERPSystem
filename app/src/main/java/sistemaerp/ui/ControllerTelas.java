@@ -13,7 +13,7 @@ import sistemaerp.util.AppState;
 
 public class ControllerTelas {
 
-    //This is a speciffic class for switching window
+    //This is a speciffic class for switching windows
 
     @FXML
     private Stage stage;
